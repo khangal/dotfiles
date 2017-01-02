@@ -1,0 +1,21 @@
+set background=dark
+colorscheme solarized
+
+nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" Snippets are activated by Shift+Tab
+iunmap <S-Tab>
+let g:snippetsEmu_key = "<S-Tab>"
+
+" Enable Emmet just for HTML/CSS/ERB
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,eruby,eco EmmetInstall
+
+"emmet - Ctrl+e to expand css selectors
+let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_complete_tag = 1
+
+map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
