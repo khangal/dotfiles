@@ -15,7 +15,7 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby,eco EmmetInstall
 
 "emmet - Ctrl+e to expand css selectors
-let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_expandabbr_key = '<c-l>'
 let g:user_emmet_complete_tag = 1
 
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>

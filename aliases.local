@@ -1,0 +1,4 @@
+# Vim vimrc
+alias c="vim ~/.vimrc.local"
+alias note="vim ~/.note"
+alias cb="vim ~/.vimrc.bundles.local"
