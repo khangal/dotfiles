@@ -1,7 +1,0 @@
-h1. Khangal's Config Files
-
-Prepare
-------------
-Install antigen: https://github.com/zsh-users/antigen
-Install ag: apt-get install silversearcher-ag
-Install ctags: apt-get install exuberant-ctags

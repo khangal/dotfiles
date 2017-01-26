@@ -1,3 +1,8 @@
 Plug 'altercation/vim-colors-solarized'
-Plug 'vim-scripts/snippetsEmu'
 Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'jiangmiao/auto-pairs'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" Just an expirement
+Plug 'isRuslan/vim-es6'

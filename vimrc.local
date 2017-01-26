@@ -5,17 +5,29 @@ nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
 
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+map <Leader>vi :tabe ~/.vimrc.local<CR>
+map <Leader>vb :tabe ~/.vimrc.bundles.local<CR>
 
-" Snippets are activated by Shift+Tab
-iunmap <S-Tab>
-let g:snippetsEmu_key = "<S-Tab>"
+" Ultisnippets
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" autocmd FileType js UltiSnipsAddFiletypes javascript-es6
 
 " Enable Emmet just for HTML/CSS/ERB
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,eruby,eco EmmetInstall
+autocmd FileType html,css,eruby,eco,php EmmetInstall
 
 "emmet - Ctrl+e to expand css selectors
 let g:user_emmet_expandabbr_key = '<c-l>'
 let g:user_emmet_complete_tag = 1
 
-map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+map <Leader>p :set paste<CR><esc>"*p:set nopaste<cr>:retab<cr>
+vnoremap <C-c> "+y
+
+" Emacs-like beginning and end of line.
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
+
+" Complete terms from all buffers
+set complete=.,w,b,u,t,i
