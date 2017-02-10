@@ -3,3 +3,5 @@ alias c="vim ~/.vimrc.local"
 alias note="vim ~/.note"
 alias cb="vim ~/.vimrc.bundles.local"
 alias js="vim ~/.vim/after/ftplugin/javascript.vim"
+
+alias l="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

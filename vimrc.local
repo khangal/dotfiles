@@ -2,7 +2,6 @@ set background=dark
 colorscheme solarized
 
 nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
-
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 map <Leader>vi :tabe ~/.vimrc.local<CR>
@@ -29,5 +28,5 @@ vnoremap <C-c> "+y
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
-" Complete terms from all buffers
-set complete=.,w,b,u,t,i
+" Complete terms from all buffers, exclude i
+set complete=.,w,b,u,t
