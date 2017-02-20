@@ -7,6 +7,10 @@ imap <C-s> <esc>:w<CR>
 map <Leader>vi :tabe ~/.vimrc.local<CR>
 map <Leader>vb :tabe ~/.vimrc.bundles.local<CR>
 
+" Fix Ubuntu 16.04 move cursor by word in CmdLine mode
+cnoremap [1;5D <C-Left>
+cnoremap [1;5C <C-Right>
+
 " Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
