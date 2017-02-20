@@ -7,8 +7,11 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 map <Leader>vi :tabe ~/.vimrc.local<CR>
 map <Leader>vb :tabe ~/.vimrc.bundles.local<CR>
+map <Leader>dl :tabe ~/.vim_do_later<CR> " Do later
 imap <C-k> <CR><C-o>O
 imap <C-J> <C-O>o
+
+command! Q q " Bind :Q to :q
 
 " Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
