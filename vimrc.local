@@ -13,6 +13,10 @@ imap <C-J> <C-O>o
 
 command! Q q " Bind :Q to :q
 
+" Fix Ubuntu 16.04 move cursor by word in CmdLine mode
+cnoremap [1;5D <C-Left>
+cnoremap [1;5C <C-Right>
+
 " Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
