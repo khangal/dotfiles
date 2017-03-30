@@ -40,3 +40,8 @@ imap <c-a> <c-o>^
 
 " Complete terms from all buffers, exclude i
 set complete=.,w,b,u,t,i
+" set complete-=i
+" Just expirement
+set wildmenu
+set wildmode=list:longest,full
+" set wildmode=list:full r00k, aaron
