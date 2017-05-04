@@ -1,3 +1,5 @@
+set relativenumber
+set hlsearch
 set background=dark
 colorscheme solarized
 
@@ -7,9 +9,8 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 map <Leader>vi :tabe ~/.vimrc.local<CR>
 map <Leader>vb :tabe ~/.vimrc.bundles.local<CR>
-map <Leader>dl :tabe ~/.vim_do_later<CR> " Do later
-imap <C-k> <CR><C-o>O
-imap <C-J> <C-O>o
+map <Leader>da :tabe ~/.cheatsheet.markdown<CR>
+map <C-h> :nohl<cr>
 
 command! Q q " Bind :Q to :q
 
@@ -39,11 +40,12 @@ imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
 " Complete terms from all buffers, exclude i
-set complete=.,w,b,u,t,i
-" set complete-=i
+" set complete=.,w,b,u,t,i
+set complete-=i
 " Just expirement
 " set wildmenu
 " set wildmode=list:longest,full
 " set wildmode=list:full r00k, aaron
 
 let g:jsx_ext_required = 0
+let g:netrw_keepdir=0
