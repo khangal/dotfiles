@@ -5,4 +5,5 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Just an expirement
-Plug 'isRuslan/vim-es6'
+" Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'

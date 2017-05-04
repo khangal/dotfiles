@@ -42,6 +42,8 @@ imap <c-a> <c-o>^
 set complete=.,w,b,u,t,i
 " set complete-=i
 " Just expirement
-set wildmenu
-set wildmode=list:longest,full
+" set wildmenu
+" set wildmode=list:longest,full
 " set wildmode=list:full r00k, aaron
+
+let g:jsx_ext_required = 0
