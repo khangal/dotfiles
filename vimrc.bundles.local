@@ -7,3 +7,4 @@ Plug 'honza/vim-snippets'
 " Just an expirement
 " Plug 'isRuslan/vim-es6'
 Plug 'mxw/vim-jsx'
+Plug 'mitsuhiko/vim-jinja'
