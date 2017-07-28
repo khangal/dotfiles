@@ -3,3 +3,5 @@ alias note="vim ~/.note"
 alias js="bundle exec jekyll serve --watch"
 
 alias l="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias todo="git grep -i todo"
+alias sc="sudo systemctl"

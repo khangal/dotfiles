@@ -27,14 +27,11 @@ cnoremap [1;5C <C-Right>
 " Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" autocmd FileType js UltiSnipsAddFiletypes javascript-es6
 
 " Enable Emmet just for HTML/CSS/ERB
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript,eruby,eco,php,htmljinja EmmetInstall
 
-"emmet - Ctrl+e to expand css selectors
 let g:user_emmet_expandabbr_key = '<C-l>'
 let g:user_emmet_complete_tag = 1
 
@@ -46,15 +43,19 @@ imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
 imap <C-k> <CR><c-o>O
+" Execute macro in q
+map Q @q
 
-" Search word under cursor
-nmap K :grep "\b<C-R><C-W>\b"<CR>
-
-" Complete terms from all buffers, exclude i
 " set complete=.,w,b,u,t,i
-set complete-=i
+set complete=.,w,b,u,t
 
 let g:jsx_ext_required = 0
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': ['python'] }
+let g:syntastic_python_flake8_post_args = "--max-line-length=100 --inline-quotes '\"' *.py"
+
+autocmd FileType yaml setlocal foldmethod=indent
+autocmd FileType yaml setlocal foldlevel=1
+autocmd FileType html setlocal textwidth=159
 
 ":1 Vim folding
 function! g:VimFoldText()
@@ -448,3 +449,17 @@ endfunction
 " endfold
 
 autocmd FileType htmljinja setlocal foldmethod=expr foldexpr=g:HTMLFoldExpr() foldtext=g:HTMLFoldText()
+
+":1 Javascript folding
+function! g:JavascriptFoldText()
+  let l:line = getline(v:foldstart)
+  let l:trimmed = substitute(l:line, '^\s*\(.\{-}\)\s*$', '\1', '')
+  let l:leading_spaces = stridx(l:line, l:trimmed)
+  let l:prefix = repeat(' ', l:leading_spaces)
+  let l:size = strlen(l:trimmed)
+
+  let l:trimmed = strpart(l:trimmed, 4, l:size - 4)
+  return l:prefix . '▸   ' . l:trimmed
+endfunction
+autocmd FileType javascript setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold foldtext=g:JavascriptFoldText()
+autocmd FileType javascript setlocal autoindent
