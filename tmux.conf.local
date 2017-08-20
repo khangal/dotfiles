@@ -1,8 +1,8 @@
 # Use default binding
 unbind C-s
-set -g prefix2 C-b
+set -g prefix2 C-q
 
-set -g mouse off
-# set -g mouse-resize-pane on
+# Currently it's not possible to use only on pane-resize
+# set -g mouse on
 
 set-window-option -g xterm-keys on
