@@ -1,7 +1,10 @@
 # Vim vimrc
+alias amend="git commit --amend"
 alias note="vim ~/.note"
 alias js="bundle exec jekyll serve --watch"
 
 alias l="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias todo="git grep -i todo"
 alias sc="sudo systemctl"
+
+alias yplaylist='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
