@@ -48,21 +48,23 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " endfold
 ":1 Library configs
 
-" Ultisnippets
+":2 Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
-" Enable Emmet just for HTML/CSS/ERB
+":2 Enable Emmet just for HTML/CSS/ERB
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir EmmetInstall
 
 let g:user_emmet_expandabbr_key = '<C-l>'
 let g:user_emmet_complete_tag = 1
 
-let g:jsx_ext_required = 0
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': ['python', 'stylus', 'scss', 'sass'] }
-let g:syntastic_python_flake8_post_args = "--max-line-length=100 --inline-quotes '\"' *.py"
-
+":2 ALE
+" set updatetime=10000
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = "never"
+let g:ale_lint_on_save = 0
+let g:ale_python_flake8_options = "--max-line-length=100 --inline-quotes '\"' ."
 " endfold
 
 autocmd FileType yaml setlocal foldmethod=indent
