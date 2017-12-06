@@ -1,0 +1,12 @@
+snippet	tripdel ""
+for trip in Trip.all():
+	if hasattr(trip, 'host_phone'):
+		del trip.host_phone
+		trip.save()
+endsnippet
+
+snippet p "print"
+print "--------------------------------------------------------"
+print ${1}
+print "--------------------------------------------------------"
+endsnippet
