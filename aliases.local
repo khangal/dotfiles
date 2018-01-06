@@ -7,5 +7,8 @@ alias l="git log --graph"
 alias todo="git grep -i todo"
 alias sc="sudo systemctl"
 alias b="git branch"
+alias d="git diff --cached"
+
+alias pgl="echo sudo -u postgres psql;sudo -u postgres psql"
 
 alias yplaylist='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'

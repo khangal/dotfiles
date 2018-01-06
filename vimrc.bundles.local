@@ -1,4 +1,5 @@
 Plug 'altercation/vim-colors-solarized'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
@@ -7,6 +8,7 @@ Plug 'khangal/vim-jinja'
 Plug 'wavded/vim-stylus'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-ragtag'
+Plug 'junegunn/goyo.vim'
 
 " Experiment
 Plug 'slashmili/alchemist.vim'
