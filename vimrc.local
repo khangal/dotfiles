@@ -4,13 +4,16 @@ set relativenumber
 " if has('termguicolors')
 "   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"   set termguicolors
+  " set termguicolors
 " endif
 
 colorscheme solarized
 set background=dark
 
 set complete=.,w,b,u,t
+" highlight IncSearch ctermbg=green ctermbg=green term=underline
+highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
+" hi IncSearch term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=bold guifg=White guibg=Red
 
 ":1 Mappings
 nmap <Leader>ci :source ~/.vimrc.local<cr>
@@ -118,4 +121,3 @@ if !exists(":Iex")
   " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   " nnoremap \ :Ag<SPACE>
 endif
-
