@@ -1,39 +1,75 @@
 set relativenumber
 " set hlsearch
+nnoremap <C-h> :set hlsearch!<CR>
+
+set complete=.,w,b,u,t
+
+let test#elixir#exunit#options = {
+  \ 'nearest': '--only wip',
+\}
+
+":1 Colorscheme
+set background=dark
+colorscheme solarized
+
+" Magenta - 13, White(base3) - 15
+highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
+
+" base03  = 8
+" base02  = 0
+" base01  = 10
+" base00  = 11
+" base0   = 12
+" base1   = 14
+" base2   = 7
+" base3   = 15
+" yellow  = 3
+" orange  = 9
+" red     = 1
+" magenta = 5
+" violet  = 13
+" blue    = 4
+" cyan    = 6
+" green   = 2
 
 " if has('termguicolors')
 "   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  " set termguicolors
+"   let &t_Co = 256
+"   set termguicolors
 " endif
 
-colorscheme solarized
-set background=dark
+":1 Status line
+function! s:statusline_expr()
+  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
+  let ro  = "%{&readonly ? '[RO] ' : ''}"
+  let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
+  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
+  let sep = ' %= '
+  let pos = ' %-12(%l : %c%V%) '
+  let pct = ' %P'
 
-set complete=.,w,b,u,t
-" highlight IncSearch ctermbg=green ctermbg=green term=underline
-highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
-" hi IncSearch term=reverse cterm=bold ctermfg=7 ctermbg=1 gui=bold guifg=White guibg=Red
+  return '[%n] %F %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
+endfunction
+let &statusline = s:statusline_expr()
 
 ":1 Mappings
 nmap <Leader>ci :source ~/.vimrc.local<cr>
 nmap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+map <Leader>g :Goyo<CR>
+
+" quick open
+map <Leader>vo :tabe ~/dotfiles-local<CR>
 map <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>
-map <Leader>vb :tabe ~/.vimrc.bundles.local<CR>:vsplit ~/.vimrc.bundles<CR><C-w><C-w>
+map <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>
+map <Leader>vu :tabe ~/dotfiles-local/vim/UltiSnips<CR>
 map <Leader>da :tabe ~/.cheatsheet.markdown<CR>
 map <Leader>q :tabe ~/.ideas.markdown<CR>
 map <Leader>ee :tabe ~/.examples.exs<CR>
 map <Leader>ep :tabe ~/.examples.py<CR>
 map <Leader>ec :tabe ~/.examples.css<CR>
-map <Leader>g :Goyo<CR>
-map <C-h> :nohl<cr>
-
-" Fix Ubuntu 16.04 move cursor by word in CmdLine mode
-" desktop
-" cnoremap [1;5D <C-Left>
-" cnoremap [1;5C <C-Right>
 
 " notebook
 cnoremap ^[[D <C-Left>
@@ -54,9 +90,6 @@ vnoremap <C-c> "+y
 
 " bind K to grep word under cursor
 " nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-":1 vim-test
-let g:test#preserve_screen = 0
 
 ":1 EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)

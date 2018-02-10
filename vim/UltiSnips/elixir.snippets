@@ -3,5 +3,19 @@ IO.inspect ${1}
 endsnippet
 
 snippet lc "List comprehension"
-for n <- ${1:[1, 2, 3]}, do: ${2:n * n}
+for ${2:n} <- ${1:[1, 2, 3]}, do: ${3:n * n}
+endsnippet
+
+snippet & "short function syntax" w
+&()
+endsnippet
+
+snippet f "singleline anonymous function" w
+fn ${1} -> ${2} end
+endsnippet
+
+snippet fn "multiline anonymous function" w
+fn ${1} ->
+	${2}
+end
 endsnippet

@@ -6,5 +6,4 @@ set -g prefix2 C-q
 # set -g mouse on
 
 set-window-option -g xterm-keys on
-# set -g default-terminal    "screen-256color"
-# set -ga terminal-overrides ",xterm-256color:Tc"
+set-option -ga terminal-overrides ",screen-256color:Tc"

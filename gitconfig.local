@@ -5,3 +5,5 @@
 [user]
   name = Khangal
   email = khangaljargal@yahoo.com
+[diff]
+  tool = vimdiff
