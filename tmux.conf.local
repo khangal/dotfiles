@@ -6,4 +6,11 @@ set -g prefix2 C-q
 # set -g mouse on
 
 set-window-option -g xterm-keys on
+set -g default-terminal 'screen-256color'
 set-option -ga terminal-overrides ",screen-256color:Tc"
+
+# set -g status-left-length 40
+# set -g status-fg black
+# set -g status-bg "colour11"
+# set -g status-left '[#S] '
+# set -g status-right ""

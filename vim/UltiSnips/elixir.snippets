@@ -1,5 +1,5 @@
 snippet i "Inspect element" w
-IO.inspect ${1}
+IO.inspect
 endsnippet
 
 snippet lc "List comprehension"
@@ -22,4 +22,11 @@ endsnippet
 
 snippet mc "Map comprehension"
 for {${2:k, v}} <- ${1:foo}, do: ${3}
+endsnippet
+
+snippet fnm "multibody anonymous function" w
+fn
+	${1} -> ${3}
+	${2} -> ${4}
+end
 endsnippet

@@ -1,8 +1,7 @@
 set relativenumber
 " set hlsearch
-nnoremap <C-h> :set hlsearch!<CR>
-
 set complete=.,w,b,u,t
+silent! map <F2> :set hlsearch!<CR>
 
 let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
@@ -13,6 +12,7 @@ set background=dark
 colorscheme solarized
 
 " Magenta - 13, White(base3) - 15
+highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
 highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
 
 " base03  = 8
@@ -70,6 +70,8 @@ map <Leader>q :tabe ~/.ideas.markdown<CR>
 map <Leader>ee :tabe ~/.examples.exs<CR>
 map <Leader>ep :tabe ~/.examples.py<CR>
 map <Leader>ec :tabe ~/.examples.css<CR>
+map <Leader>co mmggVG"*y`m
+map <Leader>eo mmf>a<CR><esc>$F<i<CR><esc>`m
 
 " notebook
 cnoremap ^[[D <C-Left>
@@ -120,13 +122,11 @@ nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 
 ":1 Goyo
 function! s:goyo_enter()
-  colorscheme morning
   set background=light
   set foldlevel=20
 endfunction
 
 function! s:goyo_leave()
-  colorscheme solarized
   set background=dark
 endfunction
 
@@ -146,6 +146,7 @@ endif
 autocmd FileType yaml setlocal foldmethod=indent
 autocmd FileType yaml setlocal foldlevel=1
 autocmd FileType html,htmljinja setlocal textwidth=140
+autocmd FileType elixir setlocal textwidth=98
 autocmd FileType python setlocal textwidth=100
 autocmd FileType python nmap <Leader>t :!python %<cr>
 
