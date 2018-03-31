@@ -7,6 +7,26 @@ let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
 \}
 
+" woow: :e ++ff=dos
+
+" let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+" let g:FZF_DEFAULT_COMMAND = 'ag -Q -l --nocolor --hidden -g "" %s'
+nmap <C-f> :GitFiles<CR>
+
+" Keymap switch
+let g:current_keymap = ''
+function! g:ToggleKeymap()
+  if g:current_keymap ==# ''
+    set keymap=mongolian
+    let g:current_keymap = 'mongolian'
+  else
+    set keymap=""
+    let g:current_keymap = ''
+  endif
+endfunction
+
+imap jj <C-o>:call ToggleKeymap()<CR>
+
 ":1 Colorscheme
 set background=dark
 colorscheme solarized
@@ -122,12 +142,11 @@ nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 
 ":1 Goyo
 function! s:goyo_enter()
-  set background=light
-  set foldlevel=20
+  set cursorline
 endfunction
 
 function! s:goyo_leave()
-  set background=dark
+  set cursorline!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
