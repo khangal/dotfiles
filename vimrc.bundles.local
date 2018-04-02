@@ -11,6 +11,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Experiment
 Plug 'slashmili/alchemist.vim'
