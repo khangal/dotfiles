@@ -1,6 +1,7 @@
 set relativenumber
 " set hlsearch
 set complete=.,w,b,u,t
+set hlsearch
 silent! map <F2> :set hlsearch!<CR>
 
 let test#elixir#exunit#options = {
@@ -13,26 +14,18 @@ let test#elixir#exunit#options = {
 " let g:FZF_DEFAULT_COMMAND = 'ag -Q -l --nocolor --hidden -g "" %s'
 nmap <C-f> :GitFiles<CR>
 
-" Keymap switch
-let g:current_keymap = ''
-function! g:ToggleKeymap()
-  if g:current_keymap ==# ''
-    set keymap=mongolian
-    let g:current_keymap = 'mongolian'
-  else
-    set keymap=""
-    let g:current_keymap = ''
-  endif
-endfunction
+set keymap=mongolian
+set iminsert=0
 
-imap jj <C-o>:call ToggleKeymap()<CR>
+" Keymap switch
+imap <F1> <C-^>
+cmap <F1> <C-^>
 
 ":1 Colorscheme
 set background=dark
 colorscheme solarized
 
 " Magenta - 13, White(base3) - 15
-highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
 highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
 
 " base03  = 8
@@ -84,12 +77,7 @@ map <Leader>g :Goyo<CR>
 map <Leader>vo :tabe ~/dotfiles-local<CR>
 map <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>
 map <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>
-map <Leader>vu :tabe ~/dotfiles-local/vim/UltiSnips<CR>
-map <Leader>da :tabe ~/.cheatsheet.markdown<CR>
 map <Leader>q :tabe ~/.ideas.markdown<CR>
-map <Leader>ee :tabe ~/.examples.exs<CR>
-map <Leader>ep :tabe ~/.examples.py<CR>
-map <Leader>ec :tabe ~/.examples.css<CR>
 map <Leader>co mmggVG"*y`m
 map <Leader>eo mmf>a<CR><esc>$F<i<CR><esc>`m
 
@@ -102,7 +90,7 @@ imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
 imap <C-k> <CR><c-o>O
-command! Q q " Bind :Q to :q
+cnoreabbrev Q q
 
 " Execute macro in q
 map Q @q
