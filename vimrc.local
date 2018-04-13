@@ -1,7 +1,7 @@
 set relativenumber
 " set hlsearch
 set complete=.,w,b,u,t
-set hlsearch
+set autoread
 silent! map <F2> :set hlsearch!<CR>
 
 let test#elixir#exunit#options = {
@@ -16,6 +16,7 @@ nmap <C-f> :GitFiles<CR>
 
 set keymap=mongolian
 set iminsert=0
+set imsearch=-1
 
 " Keymap switch
 imap <F1> <C-^>
@@ -123,8 +124,11 @@ let g:user_emmet_complete_tag = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = "never"
 let g:ale_lint_on_save = 0
-let g:ale_python_flake8_options = "--max-line-length=100 --inline-quotes '\"' ."
+" let g:ale_python_flake8_options = "--max-line-length=100 --inline-quotes '\"' ."
+let g:ale_python_flake8_args = '--select F'
+
 autocmd FileType elixir ALEDisable
+nmap <silent> <Leader>a :ALELint<CR>
 nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 
