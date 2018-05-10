@@ -19,8 +19,12 @@ set iminsert=0
 set imsearch=-1
 
 " Keymap switch
+map <F1> <ESC>
+" map! <F1> <ESC>
 imap <F1> <C-^>
 cmap <F1> <C-^>
+call tcomment#DefineType('eelixir', '<%%# %s %%>' )
+map <F5> :!elixir %<cr>
 
 ":1 Colorscheme
 set background=dark
@@ -90,7 +94,7 @@ cnoremap ^[[C <C-Right>
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
-imap <C-k> <CR><c-o>O
+imap <C-K> <CR><c-o>O
 cnoreabbrev Q q
 
 " Execute macro in q

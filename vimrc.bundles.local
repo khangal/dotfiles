@@ -14,7 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " Experiment
-Plug 'slashmili/alchemist.vim'
+" Plug 'slashmili/alchemist.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'mxw/vim-jsx'
 
