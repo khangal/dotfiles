@@ -1,8 +1,17 @@
+":1 General
 set relativenumber
-" set hlsearch
 set complete=.,w,b,u,t
 set autoread
 silent! map <F2> :set hlsearch!<CR>
+
+set ignorecase                    " Case-insensitive searching.
+set smartcase                     " But case-sensitive if expression contains a capital letter.
+
+set tags+=.git/tags
+
+let test#strategy = {
+  \ 'file':    'basic',
+\}
 
 let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
@@ -14,7 +23,7 @@ let test#elixir#exunit#options = {
 " let g:FZF_DEFAULT_COMMAND = 'ag -Q -l --nocolor --hidden -g "" %s'
 nmap <C-f> :GitFiles<CR>
 
-set keymap=mongolian
+" set keymap=mongolian
 set iminsert=0
 set imsearch=-1
 
@@ -24,7 +33,6 @@ map <F1> <ESC>
 imap <F1> <C-^>
 cmap <F1> <C-^>
 call tcomment#DefineType('eelixir', '<%%# %s %%>' )
-map <F5> :!elixir %<cr>
 
 ":1 Colorscheme
 set background=dark
@@ -102,6 +110,8 @@ map Q @q
 
 map <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
+vnoremap <leader>k y:Ag <c-r>"<cr>
+nnoremap K :Ag <C-R><C-W><CR>
 
 " bind K to grep word under cursor
 " nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -115,7 +125,8 @@ nmap ga <Plug>(EasyAlign)
 
 ":1 Ultisnippets
 let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+" inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
 
 ":1 Enable Emmet just for HTML/CSS/ERB
 let g:user_emmet_install_global = 0
@@ -147,26 +158,23 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 " endfold
-
 ":1 Folding
+set foldlevelstart=20
+
+function! g:VimFoldText()
+  let l:line = getline(v:foldstart)
+  let l:trimmed = substitute(l:line, '^\s*\(.\{-}\)\s*$', '\1', '')
+  let l:leading_spaces = stridx(l:line, l:trimmed)
+  let l:prefix = repeat(' ', l:leading_spaces)
+  let l:size = strlen(l:trimmed)
+
+  let l:trimmed = strpart(l:trimmed, 4, l:size - 4)
+  return l:prefix . '▸   ' . l:trimmed
+endfunction
+
 augroup vimrc
-  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold foldtext=g:VimFoldText()
+  autocmd FileType vim normal zM
 augroup END
-
-if filereadable($HOME . "/dotfiles-munkhbaatar/filetypes.vim")
-  source ~/dotfiles-munkhbaatar/filetypes.vim
-endif
-
-autocmd FileType yaml setlocal foldmethod=indent
-autocmd FileType yaml setlocal foldlevel=1
-autocmd FileType html,htmljinja setlocal textwidth=140
-autocmd FileType elixir setlocal textwidth=98
-autocmd FileType python setlocal textwidth=100
-autocmd FileType python nmap <Leader>t :!python %<cr>
-
-if !exists(":Iex")
-  command! Iex Dispatch !iex -S mix
-  " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  " nnoremap \ :Ag<SPACE>
-endif

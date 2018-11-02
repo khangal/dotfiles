@@ -22,3 +22,21 @@ endglobal
 snippet bt "button_to (name, dest)" w
 `!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`button_to "${1:link text...}", ${2:dest}`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_EXPR', snip)`
 endsnippet
+
+snippet fw "form_with"
+`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with model: @${1:model} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+  $0
+`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+endsnippet
+
+snippet fwu "form_with url"
+`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with url: ${1:url} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+  $0
+`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+endsnippet
+
+snippet each "ActiveRecord each"
+`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_INLINE', snip)`${1:collection}.each do |${2:singular}| `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+  $0
+`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+endsnippet

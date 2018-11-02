@@ -11,7 +11,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'yssl/QFEnter'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-utils/vim-ruby-fold'
 
 " Experiment
 " Plug 'slashmili/alchemist.vim'
@@ -21,6 +23,3 @@ Plug 'Vimjas/vim-python-pep8-indent'
 UnPlug 'vim-go'
 UnPlug 'vim-slim'
 UnPlug 'vim-coffee-script'
-UnPlug 'tpope/vim-bundler'
-UnPlug 'tpope/vim-rails'
-UnPlug 'tpope/vim-rake'
