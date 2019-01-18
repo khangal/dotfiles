@@ -1,5 +1,5 @@
 snippet i "Inspect element" w
-IO.inspect(label: "\n\n--------------------\n")
+IO.inspect ${0}
 endsnippet
 
 snippet lc "List comprehension"
@@ -29,4 +29,14 @@ fn
 	${1} -> ${3}
 	${2} -> ${4}
 end
+endsnippet
+
+snippet doct "doc tests" w
+@doc """
+${1:description}
+
+## Examples
+
+		iex> ${2}
+"""
 endsnippet

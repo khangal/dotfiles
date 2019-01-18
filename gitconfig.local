@@ -7,3 +7,5 @@
   email = khangaljargal@yahoo.com
 [diff]
   tool = vimdiff
+[core]
+  editor = vim

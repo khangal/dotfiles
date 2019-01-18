@@ -1,4 +1,14 @@
-":1 General
+" General {{{1
+if exists('theme') && theme == "light"
+  set background=light
+else
+  set background=dark
+endif
+
+let g:elixir_indent_debug=1
+
+colorscheme solarized
+
 set relativenumber
 set complete=.,w,b,u,t
 set autoread
@@ -13,46 +23,17 @@ set imsearch=-1
 
 " Keymap switch
 noremap <F1> <ESC>
-
-" map! <F1> <ESC>
 inoremap <F1> <C-^>
 cnoremap <F1> <C-^>
 call tcomment#DefineType('eelixir', '<%%# %s %%>' )
 
 iabbrev AR ActiveRecord
 
-":1 Colorscheme
-set background=dark
-colorscheme solarized
+augroup elixir
+  autocmd FileType elixir setlocal textwidth=92
+augroup END
 
-" Magenta - 13, White(base3) - 15
-highlight IncSearch cterm=bold ctermbg=13 ctermfg=15
-
-" base03  = 8
-" base02  = 0
-" base01  = 10
-" base00  = 11
-" base0   = 12
-" base1   = 14
-" base2   = 7
-" base3   = 15
-" yellow  = 3
-" orange  = 9
-" red     = 1
-" magenta = 5
-" violet  = 13
-" blue    = 4
-" cyan    = 6
-" green   = 2
-
-" if has('termguicolors')
-"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"   let &t_Co = 256
-"   set termguicolors
-" endif
-
-":1 Status line
+" Status line {{{1
 function! s:statusline_expr()
   let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
 
@@ -60,34 +41,36 @@ function! s:statusline_expr()
   let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
   let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
   let sep = ' %= '
+  " let uni = ' %B  😋 '
+  let uni = ' %B  🎁 '
   let pos = ' %-12(%l : %c%V%) '
   let pct = ' %P'
 
-  return '[%n] %F %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
+  return '[%n] %F %<'.mod.ro.ft.fug.sep.uni.pos.'%*'.pct
 endfunction
 let &statusline = s:statusline_expr()
 
-":1 Mappings
+" Mappings {{{1
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
-nnoremap <C-f> :GitFiles<CR>
-" search word under cursor
-nnoremap <silent> K :Ag <C-r><C-w><CR>
+
 " for convenience
-nnoremap <Leader>ci :source ~/.vimrc.local<cr>
+nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles.local<cr>
 nnoremap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
 
 " quick open
 noremap <Leader>vo :tabe ~/dotfiles-local<CR>
+noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>
 noremap <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>
 noremap <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>
 noremap <Leader>q :tabe ~/.ideas.markdown<CR>
-noremap <Leader>co mmggVG"*y`m
-noremap <Leader>eo mmf>a<CR><esc>$F<i<CR><esc>`m
 
 " notebook
 cnoremap ^[[D <C-Left>
 cnoremap ^[[C <C-Right>
+
+" run Elixir formatter
+noremap <Leader>f :!mix format %<cr>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
@@ -99,41 +82,68 @@ cnoreabbrev Q q
 " Execute macro in q
 noremap Q @q
 
+" search word under cursor
+nnoremap <silent> K :Ag <C-r><C-w><CR>
+
+noremap <Leader>r :!clear<CR>:!elixir %<CR>
 noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
 
-":1 Alt mappings (doesn't work in insert mode)
+" Alt mappings (doesn't work in insert mode) {{{1
 nnoremap <silent> d :set hlsearch!<CR>
-" fzf search all files
-nnoremap f :Files<CR>
+" light background
+nnoremap t :call ToggleBackground()<CR>
 
-":1 Stolen functions
+" Show syntax highlighting groups for word under cursor
+nmap e :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
+" Functions {{{1
 function! RocketFix()
   %s/:\([^=,'"]*\) =>/\1:/gc
 endfunction
 
-":1 Vim Folding
-set foldlevelstart=20
-
-function! g:VimFoldText()
-  let l:line = getline(v:foldstart)
-  let l:trimmed = substitute(l:line, '^\s*\(.\{-}\)\s*$', '\1', '')
-  let l:leading_spaces = stridx(l:line, l:trimmed)
-  let l:prefix = repeat(' ', l:leading_spaces)
-  let l:size = strlen(l:trimmed)
-
-  let l:trimmed = strpart(l:trimmed, 4, l:size - 4)
-  return l:prefix . '▸   ' . l:trimmed
+function! CleanPDF()
+  silent! %s/\%uAD/-/g
+  silent! %s/\%u37E/;/g
 endfunction
 
+function! ToggleBackground()
+  if &background == "dark"
+    let &background = "light"
+  else
+    let &background = "dark"
+  endif
+endfunction
+
+function! ClearInvisibles()
+  silent! %s/​//g
+  silent! %s/\%u00a0//g
+endfunction
+
+if !exists(":Iex")
+  command -nargs=0 Iex Start iex -S mix
+endif
+
+" Vim Folding {{{1
+hi Folded ctermbg=Black ctermfg=DarkBlue
+set foldmethod=syntax
+set foldlevelstart=99
+
 augroup vimrc
-  autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold foldtext=g:VimFoldText()
+  autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
+  autocmd FileType vim setlocal foldlevelstart=20
 augroup END
 
-":1 Bundle configs
-":2 vim-test
+" Bundle configs {{{1
+" vim-test {{{2
 let test#strategy = {
   \ 'file':    'basic',
 \}
@@ -142,7 +152,7 @@ let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
 \}
 
-":2 Goyo
+" Goyo {{{2
 nnoremap <Leader>g :Goyo<CR>
 
 function! s:goyo_enter()
@@ -156,7 +166,7 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-":2 Enable Emmet just for HTML/CSS/ERB
+" Enable Emmet just for HTML/CSS/ERB {{{2
 let g:user_emmet_install_global = 0
 augroup emmet
   autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir EmmetInstall
@@ -165,14 +175,25 @@ augroup END
 let g:user_emmet_expandabbr_key = '<C-l>'
 let g:user_emmet_complete_tag = 1
 
-":2 EasyAlign
+" EasyAlign {{{2
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-":2 Ultisnippets
+" Ultisnippets {{{2
 let g:UltiSnipsExpandTrigger="<s-tab>"
 " let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 " inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
+
+" Fzf {{{2
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" {{{2 DelimitMate
+let g:delimitMate_autoclose = 1
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_inside_quotes = 1
+" }}}2
+" }}}

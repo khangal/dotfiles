@@ -12,4 +12,4 @@ alias d="git diff --cached"
 alias pgl="echo sudo -u postgres psql;sudo -u postgres psql"
 
 # Youtube-dl
-alias yplaylist='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
+alias yplaylist='youtube-dl --extract-audio --audio-format opus -o "%(title)s.%(ext)s"'
