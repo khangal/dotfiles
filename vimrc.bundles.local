@@ -8,7 +8,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'khangal/auto-pairs'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope-vim-endwise'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-unimpaired'
@@ -16,6 +16,20 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
 Plug 'khangal/vim-elixir'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'posva/vim-vue'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [
+    \ 'javascript',
+    \ 'css',
+    \ 'scss',
+    \ 'json',
+    \ 'markdown',
+    \ 'vue',
+    \ 'python',
+    \ 'ruby',
+    \ 'html' ] }
 
 " Experiment
 " Plug 'slashmili/alchemist.vim'

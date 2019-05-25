@@ -5,8 +5,6 @@ else
   set background=dark
 endif
 
-let g:elixir_indent_debug=1
-
 colorscheme solarized
 
 set relativenumber
@@ -70,7 +68,8 @@ cnoremap ^[[D <C-Left>
 cnoremap ^[[C <C-Right>
 
 " run Elixir formatter
-noremap <Leader>f :!mix format %<cr>
+" noremap <Leader>f :!mix format %<cr>
+noremap <Leader>f :PrettierAsync<CR>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
@@ -183,7 +182,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Ultisnippets {{{2
-let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger = "<s-tab>"
 " let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 " inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
 
@@ -191,9 +190,16 @@ let g:UltiSnipsExpandTrigger="<s-tab>"
 imap <c-x><c-l> <plug>(fzf-complete-line)
 " {{{2 DelimitMate
 let g:delimitMate_autoclose = 1
-let g:delimitMate_jump_expansion = 1
+let g:delimitMate_jump_expansion = 0
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_inside_quotes = 1
 " }}}2
+" {{{2 ALE
+let g:ale_lint_on_text_changed = "never"
+let g:ale_lint_on_save = 'never'
+let g:ale_lint_on_enter = 0
+augroup ale
+  autocmd!
+augroup END
 " }}}
