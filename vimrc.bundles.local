@@ -17,6 +17,7 @@ Plug 'tpope/vim-abolish'
 Plug 'khangal/vim-elixir'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'posva/vim-vue'
+" Plug 'tyru/caw.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/1.x',
@@ -40,6 +41,7 @@ UnPlug 'vim-run-interactive'
 UnPlug 'vim-go'
 UnPlug 'vim-slim'
 UnPlug 'vim-coffee-script'
-UnPlug 'ale'
+" UnPlug 'ale'
+" UnPlug 'tComment'
 UnPlug 'vim-run-interactive'
 UnPlug 'vim-mkdir'

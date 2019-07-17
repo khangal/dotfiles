@@ -10,6 +10,7 @@ colorscheme solarized
 set relativenumber
 set complete=.,w,b,u,t
 set autoread
+set textwidth=0
 
 set ignorecase " Case-insensitive searching.
 set smartcase  " But case-sensitive if expression contains a capital letter.
@@ -69,7 +70,7 @@ cnoremap ^[[C <C-Right>
 
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
-noremap <Leader>f :PrettierAsync<CR>
+noremap <Leader>f :ALEFix<CR>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
@@ -168,7 +169,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Enable Emmet just for HTML/CSS/ERB {{{2
 let g:user_emmet_install_global = 0
 augroup emmet
-  autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir EmmetInstall
+  autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir,vue EmmetInstall
 augroup END
 
 let g:user_emmet_expandabbr_key = '<C-l>'
@@ -197,8 +198,19 @@ let g:delimitMate_expand_inside_quotes = 1
 " }}}2
 " {{{2 ALE
 let g:ale_lint_on_text_changed = "never"
-let g:ale_lint_on_save = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = 'ℹ'
+highlight clear SignColumn
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_fixers = ['prettier', 'eslint']
+" let g:ale_fixers = {
+" \   'javascript': [
+" \       'eslint'
+" \   ],
+" \}
+
 augroup ale
   autocmd!
 augroup END
