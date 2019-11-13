@@ -53,6 +53,10 @@ let &statusline = s:statusline_expr()
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
 
+" Netrw
+" nnoremap <unique> <f5> <Plug>NetrwRefresh
+nnoremap <f5> <Plug>NetrwRefresh
+
 " for convenience
 nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles.local<cr>
 nnoremap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
@@ -215,3 +219,12 @@ augroup ale
   autocmd!
 augroup END
 " }}}
+
+augroup vue
+  autocmd!
+  autocmd FileType vue highlight htmlItalic term=NONE cterm=NONE gui=NONE
+augroup END
+
+augroup php
+    autocmd FileType php setlocal shiftwidth=4
+augroup END

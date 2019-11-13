@@ -9,3 +9,30 @@ function(${1}) {
 	${2}
 })
 endsnippet
+
+snippet vuetest
+import $1 from "@/components/$1.vue"
+import { shallowMount } from "@vue/test-utils"
+
+describe("$1", () => {
+	let vm
+
+	beforeEach(() => {
+		vm = shallowMount(${1}, {
+			propsData: {
+				
+			}
+		})
+	})
+
+	test("renders the correct message", () => {
+		expect(vm.text()).toContain("Foo bar")
+	})
+})
+endsnippet
+
+snippet sm
+$1
+
+$1
+endsnippet
