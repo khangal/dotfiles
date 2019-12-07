@@ -1,0 +1,41 @@
+" intellij settings https://drive.google.com/open?id=1fpm6D84NpOa9t6FfMsYbMvqR5rtA5pl4
+
+let mapleader = " "
+
+set visualbell
+set noerrorbells
+
+set surround
+set commentary.vim
+set incsearch     " do incremental searching
+set ignorecase " Case-insensitive searching.
+set smartcase  " But case-sensitive if expression contains a capital letter.
+set relativenumber
+set number
+
+inoremap <c-e> <c-o>A
+inoremap <c-a> <c-o>I
+inoremap <a-b> <c-o>b
+inoremap <a-f> <c-o>w
+inoremap <c-w> <c-o>db
+noremap zH 100zh
+noremap zL 100zl
+
+noremap <a-r> :action VimRedo<CR>
+noremap <C-r> :action VimRedo<CR>
+noremap <C-h> :action VimWindowLeft<CR>
+noremap <C-l> :action VimWindowRight<CR>
+noremap <C-k> :action VimWindowUp<CR>
+noremap <C-j> :action VimWindowDown<CR>
+noremap <Leader><Leader> :action VimFilePrevious<CR>
+
+noremap <Leader>p l:action $Paste<CR>
+" Case-insensitive searching.
+noremap <Leader>g :action Generate<CR>
+noremap <Leader>is :action GenerateGetterAndSetter<CR>
+
+noremap <Leader>ci :source ~/.ideavimrc<CR>
+noremap <Leader>r :action Refactorings.QuickListPopupAction<CR>
+noremap <Leader>t :action RerunTests<CR>
+" noremap <Leader>g :action ToggleDistractionFreeMode<CR>
+set ideajoin
