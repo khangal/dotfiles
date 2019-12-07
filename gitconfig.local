@@ -4,7 +4,7 @@
   colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [user]
   name = Khangal
-  email = khangaljargal@yahoo.com
+  email = khangaljargal@gmail.com
 [diff]
   tool = vimdiff
 [core]
