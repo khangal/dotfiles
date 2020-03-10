@@ -3,8 +3,8 @@
 [pretty]
   colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [user]
-  name = Khangal
-  email = khangaljargal@gmail.com
+  name = Khangal Jargalsaikhan
+  email = khangal.j@irbis.sg
 [diff]
   tool = vimdiff
 [core]

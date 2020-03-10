@@ -10,6 +10,8 @@ alias b="git branch"
 alias d="git diff --cached"
 
 alias pgl="echo sudo -u postgres psql;sudo -u postgres psql"
+alias v="$EDITOR"
+alias vim="$EDITOR"
 
 # Youtube-dl
 alias yplaylist='youtube-dl --extract-audio --audio-format opus -o "%(title)s.%(ext)s"'

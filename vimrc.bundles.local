@@ -6,6 +6,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'neovim/nvim-lsp'
 " Plug 'khangal/auto-pairs'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'

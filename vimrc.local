@@ -95,9 +95,10 @@ vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
 
 " Alt mappings (doesn't work in insert mode) {{{1
-nnoremap <silent> d :set hlsearch!<CR>
+nnoremap <silent> <A-d> :set hlsearch!<CR>
+set nohlsearch
 " light background
-nnoremap t :call ToggleBackground()<CR>
+nnoremap <A-t>:call ToggleBackground()<CR>
 
 " Show syntax highlighting groups for word under cursor
 nmap e :call <SID>SynStack()<CR>
@@ -107,6 +108,7 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
+
 
 " Functions {{{1
 function! RocketFix()
