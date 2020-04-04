@@ -28,11 +28,11 @@ call tcomment#DefineType('eelixir', '<%%# %s %%>' )
 
 iabbrev AR ActiveRecord
 
-augroup elixir
-  autocmd FileType elixir setlocal textwidth=92
-augroup END
+silent! nunmap <Left>
+silent! nunmap <Right>
+silent! nunmap <Up>
+silent! nunmap <Down>
 
-" Status line {{{1
 function! s:statusline_expr()
   let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
 
@@ -75,6 +75,7 @@ cnoremap ^[[C <C-Right>
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
 noremap <Leader>f :ALEFix<CR>
+autocmd Filetype elixir,eex noremap <Leader>f :MixFormat<CR>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
@@ -87,21 +88,19 @@ cnoreabbrev Q q
 noremap Q @q
 
 " search word under cursor
-nnoremap <silent> K :Ag <C-r><C-w><CR>
+nnoremap <silent><Leader>k :Ag <C-r><C-w><CR>
 
-noremap <Leader>r :!clear<CR>:!elixir %<CR>
 noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
 
-" Alt mappings (doesn't work in insert mode) {{{1
+" Alt mappings {{{1
 nnoremap <silent> <A-d> :set hlsearch!<CR>
 set nohlsearch
-" light background
-nnoremap <A-t>:call ToggleBackground()<CR>
+nnoremap <A-t> :call ToggleBackground()<CR>
 
 " Show syntax highlighting groups for word under cursor
-nmap e :call <SID>SynStack()<CR>
+nmap <A-e> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
     return
@@ -113,11 +112,6 @@ endfunction
 " Functions {{{1
 function! RocketFix()
   %s/:\([^=,'"]*\) =>/\1:/gc
-endfunction
-
-function! CleanPDF()
-  silent! %s/\%uAD/-/g
-  silent! %s/\%u37E/;/g
 endfunction
 
 function! ToggleBackground()
@@ -147,6 +141,25 @@ augroup vimrc
   autocmd FileType vim setlocal foldlevel=0
   autocmd FileType vim setlocal foldlevelstart=20
 augroup END
+
+" {{{1 FileType
+augroup ale
+  autocmd!
+augroup END
+
+augroup vue
+  autocmd!
+  autocmd FileType vue highlight htmlItalic term=NONE cterm=NONE gui=NONE
+augroup END
+
+augroup php
+    autocmd FileType php setlocal shiftwidth=4
+augroup END
+
+augroup elixir
+  autocmd FileType elixir setlocal textwidth=92
+augroup END
+
 
 " Bundle configs {{{1
 " vim-test {{{2
@@ -195,6 +208,8 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 
 " Fzf {{{2
 imap <c-x><c-l> <plug>(fzf-complete-line)
+nohl
+
 " {{{2 DelimitMate
 let g:delimitMate_autoclose = 1
 let g:delimitMate_jump_expansion = 0
@@ -211,22 +226,3 @@ highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = ['prettier', 'eslint']
-" let g:ale_fixers = {
-" \   'javascript': [
-" \       'eslint'
-" \   ],
-" \}
-
-augroup ale
-  autocmd!
-augroup END
-" }}}
-
-augroup vue
-  autocmd!
-  autocmd FileType vue highlight htmlItalic term=NONE cterm=NONE gui=NONE
-augroup END
-
-augroup php
-    autocmd FileType php setlocal shiftwidth=4
-augroup END
