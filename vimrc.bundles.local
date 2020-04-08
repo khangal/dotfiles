@@ -34,7 +34,7 @@ Plug 'prettier/vim-prettier', {
 " Experiment
 " Plug 'slashmili/alchemist.vim'
 " Plug 'lifepillar/vim-solarized8'
-" Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 UnPlug 'vim-run-interactive'
 UnPlug 'vim-go'

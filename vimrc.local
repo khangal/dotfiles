@@ -72,6 +72,12 @@ noremap <Leader>q :tabe ~/.ideas.markdown<CR>
 cnoremap ^[[D <C-Left>
 cnoremap ^[[C <C-Right>
 
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <M-[> <Esc>
+  tnoremap <C-v><Esc> <Esc>
+endif
+
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
 noremap <Leader>f :ALEFix<CR>
@@ -163,9 +169,7 @@ augroup END
 
 " Bundle configs {{{1
 " vim-test {{{2
-let test#strategy = {
-  \ 'file':    'basic',
-\}
+let test#strategy = "basic"
 
 let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
