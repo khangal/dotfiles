@@ -24,6 +24,12 @@ bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection c
 set -sg escape-time 0
 set-option -sa terminal-overrides ',XXX:RGB'
 
+bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
+
+bind-key r source-file ~/.tmux.conf.local
+bind-key k split-window -h "vim ~/.tmux.conf.local"
+
 # set -g status-left-length 40
 # set -g status-fg black
 # set -g status-bg "colour11"
