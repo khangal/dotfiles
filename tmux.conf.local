@@ -28,7 +28,7 @@ bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
 bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 bind-key r source-file ~/.tmux.conf.local
-bind-key k split-window -h "vim ~/.tmux.conf.local"
+bind-key K split-window -h "vim ~/.tmux.conf.local"
 
 # set -g status-left-length 40
 # set -g status-fg black

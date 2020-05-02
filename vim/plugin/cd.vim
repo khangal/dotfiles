@@ -1,5 +1,5 @@
 function! Jump(target)
-  execute "cd " . a:target
+  execute "lcd " . a:target
   edit .
 endfunction
 
