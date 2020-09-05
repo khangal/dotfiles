@@ -21,10 +21,7 @@ set tags+=.git/tags
 set iminsert=0
 set imsearch=-1
 
-" Keymap switch
-noremap <F1> <ESC>
-inoremap <F1> <C-^>
-cnoremap <F1> <C-^>
+
 call tcomment#DefineType('eelixir', '<%%# %s %%>' )
 
 iabbrev AR ActiveRecord
@@ -49,6 +46,25 @@ function! s:statusline_expr()
   return '[%n] %F %<'.mod.ro.ft.fug.sep.uni.pos.'%*'.pct
 endfunction
 let &statusline = s:statusline_expr()
+
+" Keymap switch {{{1
+set keymap=mongolian
+set keymap=""
+
+let g:is_mongolian = 0
+function! g:ToggleKeymap()
+  if g:is_mongolian
+    set keymap=
+    let g:is_mongolian = 0
+  else
+    set keymap=mongolian
+    let g:is_mongolian = 1
+  endif
+endfunction
+
+inoremap <A-l> <C-o>:call ToggleKeymap()<CR>
+cnoremap <A-l> <C-^>
+cnoremap <esc>o <home>let @x="<end>"<cr>:call ToggleKeymap()<cr>:<c-r>x
 
 " Mappings {{{1
 noremap <C-s> <esc>:w<CR>
@@ -232,7 +248,7 @@ let g:delimitMate_jump_expansion = 0
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_inside_quotes = 1
-" }}}2
+
 " {{{2 ALE
 let g:ale_lint_on_text_changed = "never"
 let g:ale_lint_on_enter = 0
