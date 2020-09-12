@@ -1,5 +1,5 @@
 " General {{{1
-if exists('theme') && theme == "light"
+if $SOLARIZED == 'light'
   set background=light
 else
   set background=dark
@@ -121,6 +121,7 @@ vnoremap <leader>k y:Ag <c-r>"<cr>
 nnoremap <silent> <A-d> :set hlsearch!<CR>
 set nohlsearch
 nnoremap <A-t> :call ToggleBackground()<CR>
+nnoremap <A-T> :call ToggleBackgroundForce()<CR>
 
 " Show syntax highlighting groups for word under cursor
 nmap <A-e> :call <SID>SynStack()<CR>
@@ -142,6 +143,16 @@ function! ToggleBackground()
     let &background = "light"
   else
     let &background = "dark"
+  endif
+endfunction
+
+function! ToggleBackgroundForce()
+  if &background == "dark"
+    let &background = "light"
+    silent !. solarize light
+  else
+    let &background = "dark"
+    silent !. solarize dark
   endif
 endfunction
 
