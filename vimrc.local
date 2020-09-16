@@ -21,6 +21,9 @@ set tags+=.git/tags
 set iminsert=0
 set imsearch=-1
 
+" TODO: expirement
+" set numberwidth=1
+
 
 call tcomment#DefineType('eelixir', '<%%# %s %%>' )
 
@@ -30,6 +33,11 @@ silent! nunmap <Left>
 silent! nunmap <Right>
 silent! nunmap <Up>
 silent! nunmap <Down>
+
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua require 'vim.highlight'.on_yank()
+augroup END
 
 function! s:statusline_expr()
   let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
@@ -91,8 +99,8 @@ cnoremap ^[[C <C-Right>
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
-  tnoremap <M-[> <Esc>
-  tnoremap <C-v><Esc> <Esc>
+  " tnoremap <M-[> <Esc>
+  " tnoremap <C-v><Esc> <Esc>
 endif
 
 " run Elixir formatter
@@ -116,6 +124,15 @@ nnoremap <silent><Leader>k :Ag <C-r><C-w><CR>
 noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
+
+noremap gb :GBranches<CR>
+noremap go :Gstatus<CR>
+noremap <A-1> 1gt
+noremap <A-2> 2gt
+noremap <A-3> 3gt
+noremap <A-4> 4gt
+noremap <A-5> 5gt
+noremap <A-6> 6gt
 
 " Alt mappings {{{1
 nnoremap <silent> <A-d> :set hlsearch!<CR>
@@ -239,6 +256,8 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 " inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
 
 " Fzf {{{2
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
