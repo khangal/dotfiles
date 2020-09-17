@@ -1,0 +1,23 @@
+#!/bin/bash
+
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+profile=${profile:1:-1}
+
+case "$1" in
+  "dark")
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/ background-color 'rgb(0,43,54)'
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/ foreground-color 'rgb(131,148,150)'
+    export SOLARIZED="dark"
+    tmux source-file ~/.tmux.solarized.dark.local
+    ;;
+  "light")
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/ background-color 'rgb(253,246,227)'
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/ foreground-color 'rgb(101,123,131)'
+    export SOLARIZED="light"
+    tmux source-file ~/.tmux.solarized.light.local
+    ;;
+  *)
+  echo "Usage: solarize [light | dark]"
+  exit
+  ;;
+esac
