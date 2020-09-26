@@ -151,6 +151,15 @@ endfunction
 
 
 " Functions {{{1
+function! ClearWhitespace()
+  retab
+  exec RemoveTrailingWhitespace()
+endfunction
+
+function! RemoveTrailingWhitespace()
+  %s/\s\+$//e
+endfunction
+
 function! RocketFix()
   %s/:\([^=,'"]*\) =>/\1:/gc
 endfunction
