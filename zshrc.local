@@ -1,0 +1,55 @@
+if [ -f ~/.zsh/.env.zsh ]; then
+    source ~/.zsh/.env.zsh
+else
+    print "404: ~/.zsh/.env.zsh not found."
+fi
+
+export EDITOR=nvim
+
+export SILENCE_RBENV_DEPRECATION=1
+
+export FZF_DEFAULT_COMMAND="ag -l"
+
+export PATH=$HOME/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/software/idea/bin:$PATH"
+export BAT_THEME="Solarized (dark)"
+
+# cd-path
+setopt auto_cd
+cdpath=($HOME/work;$HOME/clones)
+export CDPATH=$HOME/work:$HOME/clones;
+
+# CTRL + arrow keys
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
+export PATH="~/.local/bin:$PATH"
+set -o vi
+
+function ydl() {
+  youtube-dl --extract-audio --audio-format mp3 '$1'
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function curl_time() {
+    curl -so /dev/null -w "\
+   namelookup:  %{time_namelookup}s\n\
+      connect:  %{time_connect}s\n\
+   appconnect:  %{time_appconnect}s\n\
+  pretransfer:  %{time_pretransfer}s\n\
+     redirect:  %{time_redirect}s\n\
+starttransfer:  %{time_starttransfer}s\n\
+-------------------------\n\
+        total:  %{time_total}s\n" "$@"
+}
+
+if [ $commands[microk8s.kubectl] ]; then source <(microk8s.kubectl completion zsh | sed "s/complete -o default -F __start_kubectl kubectl/complete -o default -F __start_kubectl microk8s.kubectl/g" | sed "s/complete -o default -o nospace -F __start_kubectl kubectl/complete -o default -o nospace -F __start_kubectl microk8s.kubectl/g"); fi
+
+# export PATH="$(yarn global bin):$PATH"
+source ~/dotfiles-local/antigen.zsh
+
+antigen bundle lukechilds/zsh-nvm
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
