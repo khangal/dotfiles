@@ -1,3 +1,8 @@
+# Unsets
+unalias b
+unalias migrate
+unalias s
+
 # Vim vimrc
 alias amend="git commit --amend"
 alias note="vim ~/.note"
