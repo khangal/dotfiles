@@ -4,6 +4,8 @@ let mapleader = " "
 
 set visualbell
 set noerrorbells
+set ideajoin
+set ideaput
 
 set surround
 set commentary.vim

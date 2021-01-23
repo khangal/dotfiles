@@ -5,3 +5,4 @@
 3. git clone git@github.com:khangal/dotfiles-1.git dotfiles
    git clone git@github.com:khangal/dotfiles.git dotfiles-local
 4. rcup
+5. Install bat theme https://github.com/sharkdp/bat for fzf colors
