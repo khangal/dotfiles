@@ -55,6 +55,8 @@ function! s:statusline_expr()
 endfunction
 let &statusline = s:statusline_expr()
 
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+
 " Keymap switch {{{1
 set keymap=mongolian
 set keymap=""
@@ -64,12 +66,15 @@ function! g:ToggleKeymap()
   if g:is_mongolian
     set keymap=
     let g:is_mongolian = 0
+    echom "(en)"
   else
     set keymap=mongolian
     let g:is_mongolian = 1
+    echom "(mn)"
   endif
 endfunction
 
+nnoremap <A-l> :call ToggleKeymap()<CR>
 inoremap <A-l> <C-o>:call ToggleKeymap()<CR>
 cnoremap <A-l> <C-^>
 cnoremap <esc>o <home>let @x="<end>"<cr>:call ToggleKeymap()<cr>:<c-r>x
@@ -87,11 +92,11 @@ nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles.local<cr>
 nnoremap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
 
 " quick open
-noremap <Leader>vo :tabe ~/dotfiles-local<CR>
-noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>
-noremap <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>
-noremap <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>
-noremap <Leader>q :tabe ~/.ideas.markdown<CR>
+noremap <Leader>vo :tabe ~/dotfiles-local<CR>:lcd %:p:h<CR>
+noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>
+noremap <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>:lcd %:p:h<CR>
+noremap <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>:lcd %:p:h<CR>
+noremap <Leader>q :tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>
 
 " notebook
 cnoremap ^[[D <C-Left>
@@ -115,11 +120,11 @@ inoremap <c-a> <c-o>^
 inoremap <C-K> <CR><c-o>O
 cnoreabbrev Q q
 
-" Execute macro in q
-noremap Q @q
-
 " search word under cursor
-nnoremap <silent><Leader>k :Ag <C-r><C-w><CR>
+nnoremap <silent><Leader>kw :Ag <C-r><C-w><CR>
+nnoremap <silent><Leader>ke :Ag <C-r><C-w><CR>
+" search current file
+nnoremap <silent><Leader>kf :Ag %:t:r<CR>
 
 noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
@@ -299,12 +304,24 @@ let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = ['prettier', 'eslint']
 
 " {{{1 Language server
-autocmd Filetype elixir,eelixir,css,javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+lua << EOF
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.vuels.setup{}
+require'lspconfig'.elixirls.setup{}
+EOF
+
+" require'lspconfig'.cssls.setup{}
+" lua require'lspconfig'.dockerls.setup{}
+" lua require'lspconfig'.cssls.setup{}
+
+autocmd Filetype elixir,eelixir,css,scss,javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <Leader>lk <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <Leader>r      <cmd>lua vim.lsp.buf.rename()<CR>

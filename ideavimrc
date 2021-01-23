@@ -21,13 +21,11 @@ inoremap <c-w> <c-o>db
 noremap zH 100zh
 noremap zL 100zl
 
-noremap <a-r> :action VimRedo<CR>
-noremap <C-r> :action VimRedo<CR>
-noremap <C-h> :action VimWindowLeft<CR>
-noremap <C-l> :action VimWindowRight<CR>
-noremap <C-k> :action VimWindowUp<CR>
-noremap <C-j> :action VimWindowDown<CR>
-noremap <Leader><Leader> :action VimFilePrevious<CR>
+noremap <C-h> <C-w>h
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-j> <C-w>j
+noremap <Leader><Leader> <C-S-6>
 
 noremap <Leader>p l:action $Paste<CR>
 " Case-insensitive searching.
