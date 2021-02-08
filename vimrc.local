@@ -79,7 +79,7 @@ inoremap <A-l> <C-o>:call ToggleKeymap()<CR>
 cnoremap <A-l> <C-^>
 cnoremap <esc>o <home>let @x="<end>"<cr>:call ToggleKeymap()<cr>:<c-r>x
 
-" Mappings {{{1
+"Mappings {{{1
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
 
@@ -111,7 +111,9 @@ endif
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
 noremap <Leader>f :ALEFix<CR>
-autocmd Filetype elixir,eex noremap <Leader>f :MixFormat<CR>
+
+autocmd Filetype elixir,eex noremap <buffer> <Leader>f :MixFormat<CR>
+autocmd Filetype txt nunmap <buffer> <c-]>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
@@ -287,11 +289,11 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 " {{{2 DelimitMate
-let g:delimitMate_autoclose = 1
-let g:delimitMate_jump_expansion = 0
-let g:delimitMate_expand_space = 1
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_inside_quotes = 1
+let delimitMate_autoclose = 1
+let delimitMate_jump_expansion = 0
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+let delimitMate_expand_inside_quotes = 1
 
 " {{{2 ALE
 let g:ale_lint_on_text_changed = "never"
@@ -302,26 +304,12 @@ highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
 
 " {{{1 Language server
 
-lua << EOF
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.vuels.setup{}
-require'lspconfig'.elixirls.setup{}
-EOF
-
-" require'lspconfig'.cssls.setup{}
-" lua require'lspconfig'.dockerls.setup{}
-" lua require'lspconfig'.cssls.setup{}
-
 autocmd Filetype elixir,eelixir,css,scss,javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <Leader>lk <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <Leader>r      <cmd>lua vim.lsp.buf.rename()<CR>
+function! g:JsThisMap()
+  normal ^yef:wv$hpA,F:lathis.
+endfunction

@@ -17,8 +17,8 @@ export BAT_THEME="Solarized (dark)"
 
 # cd-path
 setopt auto_cd
-cdpath=($HOME/work;$HOME/clones)
-export CDPATH=$HOME/work:$HOME/clones;
+cdpath=($HOME/work;$HOME/zshcd)
+export CDPATH=$HOME/work:$HOME/zshcd;
 
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word
@@ -45,11 +45,10 @@ starttransfer:  %{time_starttransfer}s\n\
         total:  %{time_total}s\n" "$@"
 }
 
-if [ $commands[microk8s.kubectl] ]; then source <(microk8s.kubectl completion zsh | sed "s/complete -o default -F __start_kubectl kubectl/complete -o default -F __start_kubectl microk8s.kubectl/g" | sed "s/complete -o default -o nospace -F __start_kubectl kubectl/complete -o default -o nospace -F __start_kubectl microk8s.kubectl/g"); fi
-
 # export PATH="$(yarn global bin):$PATH"
 source ~/dotfiles-local/antigen.zsh
 
 antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)

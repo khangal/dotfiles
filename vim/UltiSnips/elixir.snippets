@@ -2,6 +2,12 @@ snippet i "Inspect element" w
 IO.inspect ${0}
 endsnippet
 
+snippet l "log" w
+IO.puts("************************")
+IO.inspect(${1}, label: "${0}")
+IO.puts("************************")
+endsnippet
+
 snippet lc "List comprehension"
 for ${2:n} <- ${1:[1, 2, 3]}, do: ${3:n * n}
 endsnippet

@@ -38,4 +38,5 @@ noremap <Leader>ci :source ~/.ideavimrc<CR>
 noremap <Leader>r :action Refactorings.QuickListPopupAction<CR>
 noremap <Leader>t :action RerunTests<CR>
 " noremap <Leader>g :action ToggleDistractionFreeMode<CR>
+
 set ideajoin
