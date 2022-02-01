@@ -14,11 +14,13 @@ export PATH=$HOME/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/software/idea/bin:$PATH"
 export BAT_THEME="Solarized (dark)"
+export SOLARIZED=dark
+export TERM=screen-256color
 
 # cd-path
 setopt auto_cd
-cdpath=($HOME/work;$HOME/zshcd)
-export CDPATH=$HOME/work:$HOME/zshcd;
+cdpath=($HOME/work;$HOME/zshcd,$HOME/work/andex)
+export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex;
 
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word

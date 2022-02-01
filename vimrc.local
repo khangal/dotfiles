@@ -5,8 +5,13 @@ else
   set background=dark
 endif
 
+set t_ZH=^[[3m
+set t_ZR=^[[23m
 nohl
+set termguicolors
+lua vim.g.solarized_italics = 1
 colorscheme solarized
+lua require'colorizer'.setup()
 
 set relativenumber
 set complete=.,w,b,u,t
@@ -47,7 +52,7 @@ function! s:statusline_expr()
   let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
   let sep = ' %= '
   " let uni = ' %B  😋 '
-  let uni = ' %B  🎁 '
+  let uni = ' %B :'
   let pos = ' %-12(%l : %c%V%) '
   let pct = ' %P'
 
@@ -78,6 +83,18 @@ nnoremap <A-l> :call ToggleKeymap()<CR>
 inoremap <A-l> <C-o>:call ToggleKeymap()<CR>
 cnoremap <A-l> <C-^>
 cnoremap <esc>o <home>let @x="<end>"<cr>:call ToggleKeymap()<cr>:<c-r>x
+
+function! ToggleQuickFix()
+    if getqflist({'winid' : 0}).winid
+        cclose
+    else
+        copen
+    endif
+endfunction
+
+command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
+
+nnoremap yoq :ToggleQuickFix<CR>
 
 "Mappings {{{1
 noremap <C-s> <esc>:w<CR>
@@ -110,9 +127,10 @@ endif
 
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
-noremap <Leader>f :ALEFix<CR>
+" autocmd Filetype javascript,ts,jsx,vue,json,ruby noremap <Leader>f :ALEFix<CR>
+" run lsp optimize import
+noremap <Leader>o :OrganizeImports<CR>
 
-autocmd Filetype elixir,eex noremap <buffer> <Leader>f :MixFormat<CR>
 autocmd Filetype txt nunmap <buffer> <c-]>
 
 " Emacs-like beginning and end of line.
@@ -133,7 +151,7 @@ vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
 
 noremap gb :GBranches<CR>
-noremap go :Gstatus<CR>
+noremap go :Git<CR>
 noremap <A-1> 1gt
 noremap <A-2> 2gt
 noremap <A-3> 3gt
@@ -158,6 +176,10 @@ endfunction
 
 
 " Functions {{{1
+function! g:JsThisMap()
+  normal ^yef:wv$hpA,F:lathis.
+endfunction
+
 function! ClearWhitespace()
   retab
   exec RemoveTrailingWhitespace()
@@ -231,10 +253,16 @@ augroup END
 " Bundle configs {{{1
 " vim-test {{{2
 let test#strategy = "basic"
+" let test#javascript#jest#executable = "docker exec --tty bbzz-api yarn test"
 
 let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
 \}
+
+let test#ruby#rspec#options = {}
+let test#ruby#use_binstubs = 0
+
+let test#rust#cargotest#options = '-- --nocapture'
 
 " Goyo {{{2
 nnoremap <Leader>g :Goyo<CR>
@@ -280,7 +308,7 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
+" imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
@@ -303,13 +331,73 @@ let g:ale_sign_warning = 'ℹ'
 highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
-let g:ale_fixers = ['prettier', 'eslint']
-let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+   \ 'typescript': ['prettier', 'eslint'],
+   \ 'javascript': ['prettier', 'eslint'],
+   \ 'ruby': ['rufo'],
+   \ 'css': ['prettier'],
+   \ 'xml': ['prettier'],
+   \ 'json': ['prettier'],
+   \ }
+" \ '*': ['prettier'],
+" let g:ale_fixers = ['prettier', 'eslint',' rubocop ']
+let g:ale_pattern_options = {
+\   '\.env$': {'ale_fixers': []},
+\}
+let g:ale_fix_on_save = 0
 
 " {{{1 Language server
 
-autocmd Filetype elixir,eelixir,css,scss,javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+set completeopt=menuone,noselect
+" autocmd Filetype elixir,eelixir,css,scss,javascript,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-function! g:JsThisMap()
-  normal ^yef:wv$hpA,F:lathis.
-endfunction
+" Code formatting on save
+augroup rust.vim.PreWrite
+    autocmd!
+    " autocmd BufWritePre *.rs silent! call rustfmt#PreWrite()
+    autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
+augroup END
+
+"{{{1 TreeSitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim 
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+
+        -- Or you can define your own textobjects like this
+        ["iF"] = {
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function",
+        },
+      },
+    },
+  },
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set fillchars=fold:\ 
+highlight Folded ctermfg=10

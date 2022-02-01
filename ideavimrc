@@ -35,7 +35,9 @@ noremap <Leader>g :action Generate<CR>
 noremap <Leader>is :action GenerateGetterAndSetter<CR>
 
 noremap <Leader>ci :source ~/.ideavimrc<CR>
-noremap <Leader>r :action Refactorings.QuickListPopupAction<CR>
+noremap <Leader>rr :action Refactorings.QuickListPopupAction<CR>
+noremap <Leader>re :action RefactoringMenu<CR>
+noremap <Leader>rm :action ExtractMethod<CR>
 noremap <Leader>t :action RerunTests<CR>
 " noremap <Leader>g :action ToggleDistractionFreeMode<CR>
 

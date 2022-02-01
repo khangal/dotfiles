@@ -14,15 +14,14 @@ bind m \
 
 set-window-option -g xterm-keys on
 set -g default-terminal 'screen-256color'
-set-option -ga terminal-overrides ",screen-256color:Tc"
+set-option -ga terminal-overrides ',screen*:Tc:sitm=\E[3m'
+set-option -g focus-events on
 
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
 
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 set -sg escape-time 0
-set-option -sa terminal-overrides ',XXX:RGB'
 
 bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
 bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
