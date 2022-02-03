@@ -1,6 +1,7 @@
 " Plug 'RRethy/nvim-base16'
 Plug 'ishan9299/nvim-solarized-lua'
 " Plug 'altercation/vim-colors-solarized'
+Plug 'EdenEast/nightfox.nvim'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

@@ -10,13 +10,13 @@ set t_ZR=^[[23m
 nohl
 set termguicolors
 lua vim.g.solarized_italics = 1
-colorscheme solarized
-lua require'colorizer'.setup()
+" colorscheme solarized
+" lua require'colorizer'.setup()
+colorscheme nightfox
 
 set relativenumber
 set complete=.,w,b,u,t
 set autoread
-set textwidth=0
 
 set ignorecase " Case-insensitive searching.
 set smartcase  " But case-sensitive if expression contains a capital letter.
@@ -385,12 +385,12 @@ require'nvim-treesitter.configs'.setup {
         ["ic"] = "@class.inner",
 
         -- Or you can define your own textobjects like this
-        ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function",
-        },
+        -- ["iF"] = {
+        --   python = "(function_definition) @function",
+        --   cpp = "(function_definition) @function",
+        --   c = "(function_definition) @function",
+        --   java = "(method_declaration) @function",
+        -- },
       },
     },
   },
