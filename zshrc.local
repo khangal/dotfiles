@@ -13,7 +13,7 @@ export FZF_DEFAULT_COMMAND="ag -l"
 export PATH=$HOME/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/software/idea/bin:$PATH"
-export BAT_THEME="Solarized (dark)"
+export BAT_THEME="base16"
 export SOLARIZED=dark
 export TERM=screen-256color
 
