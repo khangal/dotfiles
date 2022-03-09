@@ -1,17 +1,9 @@
 " General {{{1
-if $SOLARIZED == 'light'
-  set background=light
-else
-  set background=dark
-endif
-
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 nohl
 set termguicolors
-lua vim.g.solarized_italics = 1
-" colorscheme solarized
-" lua require'colorizer'.setup()
+
 colorscheme nightfox
 
 set relativenumber
@@ -127,7 +119,8 @@ endif
 
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
-" autocmd Filetype javascript,ts,jsx,vue,json,ruby noremap <Leader>f :ALEFix<CR>
+" autocmd Filetype javascript,typescript,jsx,vue,json,ruby noremap <Leader>f :ALEFix<CR>
+noremap <Leader>d :ALEFix<CR>
 " run lsp optimize import
 noremap <Leader>o :OrganizeImports<CR>
 
@@ -193,24 +186,6 @@ function! RocketFix()
   %s/:\([^=,'"]*\) =>/\1:/gc
 endfunction
 
-function! ToggleBackground()
-  if &background == "dark"
-    let &background = "light"
-  else
-    let &background = "dark"
-  endif
-endfunction
-
-function! ToggleBackgroundForce()
-  if &background == "dark"
-    let &background = "light"
-    silent !. solarize light
-  else
-    let &background = "dark"
-    silent !. solarize dark
-  endif
-endfunction
-
 function! ClearInvisibles()
   silent! %s/​//g
   silent! %s/\%u00a0//g
@@ -266,6 +241,9 @@ let test#rust#cargotest#options = '-- --nocapture'
 
 " Goyo {{{2
 nnoremap <Leader>g :Goyo<CR>
+
+let g:goyo_width = 130
+let g:goyo_linenr = 1
 
 function! s:goyo_enter()
   set cursorline
@@ -332,6 +310,7 @@ highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = {
+   \ 'vue': ['prettier', 'eslint'],
    \ 'typescript': ['prettier', 'eslint'],
    \ 'javascript': ['prettier', 'eslint'],
    \ 'ruby': ['rufo'],
@@ -369,6 +348,9 @@ require'nvim-treesitter.configs'.setup {
       scope_incremental = "grc",
       node_decremental = "grm",
     },
+  },
+  indent = {
+    enable = true
   },
   textobjects = {
     select = {

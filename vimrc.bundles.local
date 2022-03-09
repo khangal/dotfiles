@@ -1,5 +1,5 @@
 " Plug 'RRethy/nvim-base16'
-Plug 'ishan9299/nvim-solarized-lua'
+" Plug 'ishan9299/nvim-solarized-lua'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'mattn/emmet-vim'
@@ -42,6 +42,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'norcalli/nvim-colorizer.lua'
 
+UnPlug 'vim-ruby'
+UnPlug 'vim-javascript'
 UnPlug 'vim-run-interactive'
 UnPlug 'vim-go'
 UnPlug 'vim-slim'
