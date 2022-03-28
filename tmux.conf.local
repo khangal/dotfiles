@@ -37,4 +37,5 @@ bind-key K split-window -h "vim ~/.tmux.conf.local"
 
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
-source-file ~/.tmux.solarized.dark.local
+# source-file ~/.tmux.solarized.dark.local
+source-file ~/.tmux.nightfox.local
