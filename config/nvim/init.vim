@@ -75,9 +75,9 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
-require'lspconfig'.vuels.setup{
-    on_attach = on_attach
-}
+-- require'lspconfig'.vuels.setup{
+--     on_attach = on_attach
+-- }
 require'lspconfig'.elixirls.setup{
     cmd = { "/home/khangal/elixir-ls/language_server.sh" };
     on_attach = on_attach

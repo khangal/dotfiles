@@ -22,4 +22,5 @@ alias vim="nvim"
 alias yplaylist='youtube-dl --extract-audio --audio-format opus -o "%(title)s.%(ext)s"'
 
 alias helm="microk8s helm3"
+alias python="python3"
 # alias kubectl="microk8s kubectl"

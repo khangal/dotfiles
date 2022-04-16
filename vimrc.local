@@ -22,7 +22,7 @@ set imsearch=-1
 " set numberwidth=1
 
 
-call tcomment#DefineType('eelixir', '<%%# %s %%>' )
+" call tcomment#DefineType('eelixir', '<%%# %s %%>' )
 
 iabbrev AR ActiveRecord
 
@@ -143,6 +143,8 @@ noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
 vnoremap <leader>k y:Ag <c-r>"<cr>
 
+nmap <C-_><C-_> gcc
+" nnoremap <c-_><c-_> gcc
 noremap gb :GBranches<CR>
 noremap go :Git<CR>
 noremap <A-1> 1gt
@@ -229,6 +231,7 @@ augroup END
 " vim-test {{{2
 let test#strategy = "basic"
 " let test#javascript#jest#executable = "docker exec --tty bbzz-api yarn test"
+" let test#javascript#cypress#options = '--headless'
 
 let test#elixir#exunit#options = {
   \ 'nearest': '--only wip',
@@ -376,6 +379,10 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
+
+  context_commentstring = {
+    enable = true
+  }
 }
 EOF
 

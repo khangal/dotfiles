@@ -53,4 +53,4 @@ source ~/dotfiles-local/antigen.zsh
 antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
-[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+# [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
