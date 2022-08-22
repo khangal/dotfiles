@@ -7,6 +7,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
+" Plug 'github/copilot.vim'
 " Plug 'stsewd/fzf-checkout.vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'neovim/nvim-lspconfig'
@@ -36,6 +37,13 @@ Plug 'prettier/vim-prettier', {
     \ 'ruby',
     \ 'html' ] }
 
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
 " Experiment
 " Plug 'slashmili/alchemist.vim'
 " Plug 'lifepillar/vim-solarized8'
@@ -44,6 +52,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'norcalli/nvim-colorizer.lua'
 
+UnPlug 'vim-rake'
 UnPlug 'vim-ruby'
 UnPlug 'vim-javascript'
 UnPlug 'vim-run-interactive'
