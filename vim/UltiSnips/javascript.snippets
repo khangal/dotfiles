@@ -36,3 +36,14 @@ $1
 
 $1
 endsnippet
+
+snippet ma
+match<Result>(result)
+	.with({ type: "ok" }, (data) => {
+		logger.info(data)
+	})
+	.with({ type: "error", error: P.select() }, (error) => {
+		logger.error(error)
+	})
+	.exhaustive()
+endsnippet

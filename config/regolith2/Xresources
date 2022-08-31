@@ -1,0 +1,33 @@
+i3-wm.gaps.inner.size: 0
+i3-wm.binding.launcher.app: p
+gnome.terminal.update: false
+i3-wm.gaps.inner.size: 0
+i3-wm.client.focused.color.border: undefined
+i3-wm.client.focused.color.background: undefined
+i3-wm.client.focused.color.text: undefined
+i3-wm.client.focused.color.indicator: undefined
+i3-wm.client.focused.color.child_border: undefined
+! Nightfox colors for Xresources
+! Style: nightfox
+! Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/nightfox_xresources.Xresources
+! background: #192330
+! foreground: #cdcecf
+St.color0:  #393b44
+St.color1:  #c94f6d
+St.color2:  #81b29a
+St.color3:  #dbc074
+St.color4:  #719cd6
+St.color5:  #9d79d6
+St.color6:  #63cdcf
+St.color7:  #dfdfe0
+St.color8:  #475072
+St.color9:  #d6616b
+St.color10: #58cd8b
+St.color11: #ffe37e
+St.color12: #84cee4
+St.color13: #b8a1e3
+St.color14: #59f0ff
+St.color15: #f2f2f2
+
+!regolith.look.path: /usr/share/regolith-look/default
+regolith.look.path: /usr/share/regolith-look/ayu-dark

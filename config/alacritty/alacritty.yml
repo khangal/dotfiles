@@ -2,21 +2,21 @@
 # Style: nightfox
 # Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/nightfox_alacritty.yml
 font:
-  size: 16
+  size: 11
   normal:
-    family: Menlo # should be "Menlo" or something on macOS.
+    family: Inconsolata # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Menlo # should be "Menlo" or something on macOS.
+    family: Inconsolata # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: Menlo # should be "Menlo" or something on macOS.
+    family: Inconsolata # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 
@@ -53,3 +53,5 @@ cursor:
   style:
     shape: Block
     blinking: Never
+
+draw_bold_text_with_bright_colors: true

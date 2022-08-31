@@ -352,7 +352,7 @@ set textwidth=0
 set cursorline
 set nospell
 
-" lua migration {{{1
+" Lua migration {{{1
 
 lua <<EOF
  require('tools.main')
