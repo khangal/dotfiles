@@ -4,7 +4,11 @@ set t_ZR=^[[23m
 nohl
 set termguicolors
 
-colorscheme nightfox
+if !empty($VIM_COLORSCHEME)
+    colorscheme $VIM_COLORSCHEME
+else
+    colorscheme nightfox
+endif
 
 set relativenumber
 set complete=.,w,b,u,t
