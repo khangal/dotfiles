@@ -4,6 +4,18 @@ else
     print "404: ~/.zsh/.env.zsh not found."
 fi
 
+bindkey -v
+
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | xclip -selection clipboard
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
+
 export EDITOR=nvim
 
 export SILENCE_RBENV_DEPRECATION=1
@@ -25,6 +37,8 @@ export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex;
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+
+
 
 export PATH="~/.local/bin:$PATH"
 set -o vi

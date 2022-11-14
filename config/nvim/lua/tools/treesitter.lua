@@ -47,6 +47,13 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 
+  context_commentstring = {
+    enable = true,
+    config = {
+      typescript = { __default = '// %s', __multiline = '/* %s */' }
+    }
+  }
+
   -- context_commentstring = {
   --   enable = true
   -- }

@@ -116,11 +116,11 @@ noremap <Leader>q :tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>
 cnoremap ^[[D <C-Left>
 cnoremap ^[[C <C-Right>
 
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
+" if has('nvim')
+  " tnoremap <Esc> <C-\><C-n>
   " tnoremap <M-[> <Esc>
   " tnoremap <C-v><Esc> <Esc>
-endif
+" endif
 
 " run Elixir formatter
 " noremap <Leader>f :!mix format %<cr>
@@ -269,7 +269,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Enable Emmet just for HTML/CSS/ERB {{{2
 let g:user_emmet_install_global = 0
 augroup emmet
-  autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir,vue EmmetInstall
+  autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir,vue,typescriptreact EmmetInstall
 augroup END
 
 let g:user_emmet_expandabbr_key = '<C-l>'
@@ -319,6 +319,7 @@ highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = {
+   \ 'typescriptreact': ['prettier', 'eslint'],
    \ 'vue': ['prettier', 'eslint'],
    \ 'typescript': ['prettier', 'eslint'],
    \ 'javascript': ['prettier', 'eslint'],
@@ -355,6 +356,8 @@ highlight Folded ctermfg=10
 set textwidth=0
 set cursorline
 set nospell
+
+autocmd BufNewFile,BufRead *.eta setfiletype html
 
 " Lua migration {{{1
 
