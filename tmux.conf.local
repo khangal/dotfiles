@@ -1,5 +1,5 @@
-# Use default binding
-unbind C-s
+# Use default binding unbind C-s
+# set -g prefix2 C-q
 set -g prefix2 C-q
 
 # Currently it's not possible to use only on pane-resize
@@ -33,7 +33,8 @@ bind-key K split-window -h "vim ~/.tmux.conf.local"
 # set -g status-left '[#S] '
 # set -g status-right ""
 
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+# bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'pbcopy'
 
 # source-file ~/.tmux.solarized.dark.local
 source-file ~/.tmux/tmux.nightfox.local

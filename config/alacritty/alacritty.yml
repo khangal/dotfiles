@@ -117,6 +117,7 @@ cursor:
 draw_bold_text_with_bright_colors: true
 
 key_bindings:
+   - { key: Q, mods: Control, chars: "\x11" }
    - { key: A,         mods: Alt,       chars: "\x1ba"                       }
    - { key: B,         mods: Alt,       chars: "\x1bb"                       }
    - { key: C,         mods: Alt,       chars: "\x1bc"                       }
