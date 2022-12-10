@@ -139,14 +139,14 @@ inoremap <C-K> <CR><c-o>O
 cnoreabbrev Q q
 
 " search word under cursor
-nnoremap <silent><Leader>kw :Ag <C-r><C-w><CR>
-nnoremap <silent><Leader>ke :Ag <C-r><C-w><CR>
+nnoremap <silent><Leader>kw :S <C-r><C-w><CR>
+nnoremap <silent><Leader>ke :S <C-r><C-w><CR>
 " search current file
-nnoremap <silent><Leader>kf :Ag %:t:r<CR>
+nnoremap <silent><Leader>kf :S %:t:r<CR>
 
 noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
 vnoremap <C-c> "+y
-vnoremap <leader>k y:Ag <c-r>"<cr>
+vnoremap <leader>k y:S <c-r>"<cr>
 
 nmap <C-_><C-_> gcc
 vmap <C-_><C-_> gc
