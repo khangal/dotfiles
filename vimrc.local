@@ -61,6 +61,7 @@ autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | end
 " Keymap switch {{{1
 set keymap=mongolian
 set keymap=""
+set mouse=
 
 let g:is_mongolian = 0
 function! g:ToggleKeymap()
@@ -235,7 +236,7 @@ augroup END
 
 " Bundle configs {{{1
 " vim-test {{{2
-let test#strategy = "basic"
+let test#strategy = "neovim"
 " let test#javascript#jest#executable = "docker exec --tty bbzz-api yarn test"
 " let test#javascript#cypress#options = '--headless'
 " let test#javascript#jest#options = '--detectOpenHandles'
