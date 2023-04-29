@@ -58,6 +58,10 @@ let &statusline = s:statusline_expr()
 
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
+set pumheight=20
+" autocmd FileType netrw nnoremap <buffer> <leader>l <C-l>
+au FileType netrw nnoremap <buffer> <C-l> <C-w>l
+
 " Keymap switch {{{1
 set keymap=mongolian
 set keymap=""
@@ -236,6 +240,15 @@ augroup END
 
 " Bundle configs {{{1
 " vim-test {{{2
+" jank/vim-test and mfussenegger/nvim-dap
+nnoremap <leader>dd :TestNearest -strategy=jest<CR>
+function! JestStrategy(cmd)
+  let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
+  let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
+  call luaeval("require'tools.debugHelper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
+endfunction      
+let g:test#custom_strategies = {'jest': function('JestStrategy')}
+
 let test#strategy = "neovim"
 " let test#javascript#jest#executable = "docker exec --tty bbzz-api yarn test"
 " let test#javascript#cypress#options = '--headless'
@@ -365,3 +378,9 @@ autocmd BufNewFile,BufRead *.eta setfiletype html
 lua <<EOF
  require('tools.main')
 EOF
+
+" inspect
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
