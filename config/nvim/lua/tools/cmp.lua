@@ -1,6 +1,15 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
+-- function CustomCmdlineMappings()
+--   -- Move up and down the list of completion items with <C-k> and <C-j>
+--   vim.api.nvim_set_keymap('i', '<C-k>', 'pumvisible() ? "<C-n>" : "<C-k>"', {expr = true})
+--   vim.api.nvim_set_keymap('i', '<C-j>', 'pumvisible() ? "<C-p>" : "<C-j>"', {expr = true})
+
+--   -- Use <Tab> to select the next completion item
+--   -- vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
+-- end
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -21,6 +30,8 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-j>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }) },
+    ['<C-k>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }) },
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -46,7 +57,7 @@ cmp.setup.filetype('gitcommit', {
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
+  -- mapping = CustomCmdlineMappings(),
   sources = {
     { name = 'buffer' }
   }
@@ -54,7 +65,7 @@ cmp.setup.cmdline('/', {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  -- mapping = CustomCmdlineMappings(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
