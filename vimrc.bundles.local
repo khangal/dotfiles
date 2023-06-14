@@ -51,6 +51,8 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'jparise/vim-graphql'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-neorg/neorg', { 'do': ':Neorg sync-parsers', 'on': 'Neorg' }
+Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'norcalli/nvim-colorizer.lua'
 

@@ -21,6 +21,7 @@ set tags+=.git/tags
 
 set iminsert=0
 set imsearch=-1
+let maplocalleader = ","
 
 " TODO: expirement
 " set numberwidth=1
