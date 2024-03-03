@@ -127,6 +127,11 @@ require("lspconfig")["rust_analyzer"].setup({
       organize_imports,
       description = "Organize Imports"
     }
+  },
+  cargo = {
+    buildScripts = {
+      enable = true,
+    },
   }
 })
 
@@ -140,3 +145,36 @@ require("lspconfig")["gopls"].setup({
     }
   }
 })
+
+-- local diagnostics_visible = true
+
+-- function ToggleDiagnostics()
+--     if diagnostics_visible then
+--         vim.diagnostic.hide()
+--     else
+--         vim.diagnostic.show()
+--     end
+--     diagnostics_visible = not diagnostics_visible
+-- end
+
+-- vim.api.nvim_set_keymap('n', 'yop', '<cmd>lua ToggleDiagnostics()<CR>', {noremap = true, silent = true})
+
+_G.diagnostics_visible = true
+
+function ToggleDiagnostics()
+    if _G.diagnostics_visible then
+        vim.diagnostic.hide()
+    else
+        vim.diagnostic.show()
+    end
+    _G.diagnostics_visible = not _G.diagnostics_visible
+end
+
+vim.api.nvim_set_keymap('n', 'yop', '<cmd>lua ToggleDiagnostics()<CR>', {noremap = true, silent = true})
+
+vim.cmd [[
+  augroup DiagnosticsVisibility
+    autocmd!
+    autocmd BufWritePost * lua if vim.bo.filetype == "ruby" and not _G.diagnostics_visible then vim.diagnostic.hide() end
+  augroup END
+]]
