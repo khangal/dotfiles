@@ -21,6 +21,7 @@ set tags+=.git/tags
 
 set iminsert=0
 set imsearch=-1
+let maplocalleader = ","
 
 " TODO: expirement
 " set numberwidth=1
@@ -296,9 +297,9 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Ultisnippets {{{2
+" Ultisnips {{{2
 let g:UltiSnipsExpandTrigger = "<s-tab>"
-" inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
+inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
 
 " Fzf {{{2
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
@@ -331,7 +332,10 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = 'ℹ'
 highlight clear SignColumn
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_linters = {
+  \ 'vue': ['eslint', 'vls'],
+  \ 'go': ['gofmt']
+  \ }
 let g:ale_fixers = {
    \ 'typescriptreact': ['prettier', 'eslint'],
    \ 'vue': ['prettier', 'eslint'],
@@ -341,6 +345,7 @@ let g:ale_fixers = {
    \ 'css': ['prettier'],
    \ 'xml': ['prettier'],
    \ 'json': ['prettier'],
+   \ 'go': ['gofmt']
    \ }
 " \ '*': ['prettier'],
 " let g:ale_fixers = ['prettier', 'eslint',' rubocop ']
@@ -355,11 +360,11 @@ set completeopt=menuone,noselect
 " autocmd Filetype elixir,eelixir,css,scss,javascript,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " Code formatting on save
-augroup rust.vim.PreWrite
-    autocmd!
-    " autocmd BufWritePre *.rs silent! call rustfmt#PreWrite()
-    autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
-augroup END
+" augroup rust.vim.PreWrite
+"     autocmd!
+"     " autocmd BufWritePre *.rs silent! call rustfmt#PreWrite()
+"     autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
+" augroup END
 
 
 set foldmethod=expr
