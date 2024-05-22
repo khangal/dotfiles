@@ -32,8 +32,8 @@ export TERM=screen-256color
 # cd-path
 setopt auto_cd
 setopt cdable_vars
-cdpath=($HOME/work;$HOME/zshcd,$HOME/work/andex)
-export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex;
+cdpath=($HOME/work;$HOME/zshcd,$HOME/work/andex,$HOME/work/andex/olympus/apps)
+export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex:$HOME/work/andex/olympus/apps;
 
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word

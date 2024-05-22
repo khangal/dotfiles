@@ -5,11 +5,11 @@ require('neorg').setup {
         ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    notes = "~/Dropbox/neorg",
+                    notes = "~/Dropbox/notes",
                     tasks = "~/Dropbox/tasks",
                     me = "~/Dropbox/me",
                 },
-                default_workspace = "tasks",
+                default_workspace = "notes",
                 autodetect = true,
                 autochdir = true,
             },

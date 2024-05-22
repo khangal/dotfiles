@@ -108,15 +108,16 @@ inoremap <C-s> <esc>:w<CR>
 nnoremap <f5> <Plug>NetrwRefresh
 
 " for convenience
-nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles.local<cr>
+nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles<cr>
 nnoremap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
 
 " quick open
-noremap <Leader>vo :tabe ~/dotfiles-local<CR>:lcd %:p:h<CR>
+noremap <Leader>vo :tabe ~/dotfiles<CR>:lcd %:p:h<CR>
 noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>
-noremap <Leader>vi :tabe ~/dotfiles-local/vimrc.local<CR>:lcd %:p:h<CR>
-noremap <Leader>vb :tabe ~/dotfiles-local/vimrc.bundles.local<CR>:vsplit ~/dotfiles/vimrc.bundles<CR><C-w><C-w>:lcd %:p:h<CR>
+noremap <Leader>vi :tabe ~/dotfiles/vimrc.local<CR>:lcd %:p:h<CR>
+noremap <Leader>vb :tabe ~/dotfiles/vimrc.bundles<CR>:lcd %:p:h<CR>
 noremap <Leader>q :tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>
+noremap <Leader>vn :tabe ~/Dropbox/notes<CR>:lcd %:p:h<CR>
 
 " notebook
 cnoremap ^[[D <C-Left>
