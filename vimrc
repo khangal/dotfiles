@@ -103,14 +103,13 @@ set nojoinspaces
 " Use RipGrep
 if executable('rg')
   " Use Rg over Grep
-  set grepprg=rg\ --vimgrep\ --no-column\ --smart-case
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
   " Use rg in fzf for listing files. Lightning fast and respects .gitignore
-  " let $FZF_DEFAULT_COMMAND = 'rg --fixed-strings --files-with-matches --color never'
-  let $FZF_DEFAULT_COMMAND = 'rg --smart-case --fixed-strings --files-with-matches --color never --files'
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
   if !exists(":S")
-    command -nargs=+ -complete=file -bar S silent grep! <args>|cwindow|redraw!
+    command! -nargs=+ -complete=file -bar S silent grep! <args> | cwindow | redraw!
     nnoremap \ :S<SPACE>
   endif
 endif
