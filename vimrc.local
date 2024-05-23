@@ -117,7 +117,7 @@ noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>
 noremap <Leader>vi :tabe ~/dotfiles/vimrc.local<CR>:lcd %:p:h<CR>
 noremap <Leader>vb :tabe ~/dotfiles/vimrc.bundles<CR>:lcd %:p:h<CR>
 noremap <Leader>q :tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>
-noremap <Leader>vn :tabe ~/Dropbox/notes<CR>:lcd %:p:h<CR>
+noremap <Leader>vn :tabe ~/Dropbox/notes/index.norg<CR>:lcd %:p:h<CR>
 
 " notebook
 cnoremap ^[[D <C-Left>
