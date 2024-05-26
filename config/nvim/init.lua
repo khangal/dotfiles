@@ -1,3 +1,9 @@
+-- Set runtimepath
+vim.o.runtimepath = vim.o.runtimepath .. ',~/.vim,' .. '~/.vim/after'
+
+-- Set packpath
+vim.o.packpath = vim.o.runtimepath
+
 -- Copied from installer.lua
 local rocks_config = {
     rocks_path = vim.fn.stdpath("data") .. "/rocks",
@@ -20,11 +26,16 @@ package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
 
 vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "rocks.nvim", "*"))
 
--- Set runtimepath
-vim.o.runtimepath = vim.o.runtimepath .. ',~/.vim,' .. '~/.vim/after'
+-- Source ~/.vimrc
+vim.cmd('source ~/.vimrc.bundles')
 
--- Set packpath
-vim.o.packpath = vim.o.runtimepath
+-- Load general settings
+require('settings.general')
+
+-- Load key mappings
+require('settings.keymaps')
+
+require('tools.main')
 
 -- Source ~/.vimrc
 vim.cmd('source ~/.vimrc')

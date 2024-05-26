@@ -1,8 +1,6 @@
 " General {{{1
 set t_ZH=^[[3m
 set t_ZR=^[[23m
-nohl
-set termguicolors
 
 if !empty($VIM_COLORSCHEME)
     colorscheme $VIM_COLORSCHEME
@@ -10,56 +8,17 @@ else
     colorscheme nightfox
 endif
 
-set relativenumber
-set complete=.,w,b,u,t
-set autoread
-
-set ignorecase " Case-insensitive searching.
-set smartcase  " But case-sensitive if expression contains a capital letter.
-
-set tags+=.git/tags
-
-set iminsert=0
-set imsearch=-1
 let maplocalleader = ","
 
-" TODO: expirement
-" set numberwidth=1
-
-
-" call tcomment#DefineType('eelixir', '<%%# %s %%>' )
-
 iabbrev AR ActiveRecord
-
-silent! nunmap <Left>
-silent! nunmap <Right>
-silent! nunmap <Up>
-silent! nunmap <Down>
 
 augroup highlight_yank
   autocmd!
   autocmd TextYankPost * silent! lua require 'vim.highlight'.on_yank()
 augroup END
 
-function! s:statusline_expr()
-  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
-
-  let ro  = "%{&readonly ? '[RO] ' : ''}"
-  let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
-  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-  let sep = ' %= '
-  " let uni = ' %B  😋 '
-  let uni = ' %B :'
-  let pos = ' %-12(%l : %c%V%) '
-  let pct = ' %P'
-
-  return '[%n] %F %<'.mod.ro.ft.fug.sep.uni.pos.'%*'.pct
-endfunction
-let &statusline = s:statusline_expr()
-
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
-set pumheight=20
 " autocmd FileType netrw nnoremap <buffer> <leader>l <C-l>
 au FileType netrw nnoremap <buffer> <C-l> <C-w>l
 
@@ -99,77 +58,8 @@ command! -bang -nargs=? -complete=dir ProjectFiles call fzf#vim#files(<q-args>, 
 
 nnoremap yoq :ToggleQuickFix<CR>
 
-"Mappings {{{1
-noremap <C-s> <esc>:w<CR>
-inoremap <C-s> <esc>:w<CR>
-
-" Netrw
-" nnoremap <unique> <f5> <Plug>NetrwRefresh
-nnoremap <f5> <Plug>NetrwRefresh
-
-" for convenience
-nnoremap <Leader>ci :source ~/.vimrc.local<cr>:source ~/.vimrc.bundles<cr>
-nnoremap <Leader>bi :source ~/.vimrc.local<cr>:PlugInstall<cr>
-
-" quick open
-noremap <Leader>vo :tabe ~/dotfiles<CR>:lcd %:p:h<CR>
-noremap <Leader>vt :tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>
-noremap <Leader>vi :tabe ~/dotfiles/vimrc.local<CR>:lcd %:p:h<CR>
-noremap <Leader>vb :tabe ~/dotfiles/vimrc.bundles<CR>:lcd %:p:h<CR>
-noremap <Leader>q :tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>
-noremap <Leader>vn :tabe ~/Dropbox/notes/index.norg<CR>:lcd %:p:h<CR>
-
-" notebook
-cnoremap ^[[D <C-Left>
-cnoremap ^[[C <C-Right>
-
-" if has('nvim')
-  " tnoremap <Esc> <C-\><C-n>
-  " tnoremap <M-[> <Esc>
-  " tnoremap <C-v><Esc> <Esc>
-" endif
-
-" run Elixir formatter
-" noremap <Leader>f :!mix format %<cr>
-" autocmd Filetype javascript,typescript,jsx,vue,json,ruby noremap <Leader>f :ALEFix<CR>
-noremap <Leader>d :ALEFix<CR>
-" run lsp optimize import
-noremap <Leader>o :OrganizeImports<CR>
-
-autocmd Filetype txt nunmap <buffer> <c-]>
-
-" Emacs-like beginning and end of line.
-inoremap <c-e> <c-o>$
-inoremap <c-a> <c-o>^
-
-inoremap <C-K> <CR><c-o>O
-cnoreabbrev Q q
-
-" search word under cursor
-nnoremap <silent><Leader>kw :S <C-r><C-w><CR>
-nnoremap <silent><Leader>ke :S <C-r><C-w><CR>
-" search current file
-nnoremap <silent><Leader>kf :S %:t:r<CR>
-
-noremap <Leader>p :set paste<CR><esc>"+p:set nopaste<cr>:retab<cr>
-vnoremap <C-c> "+y
-vnoremap <leader>k y:S <c-r>"<cr>
-
-nmap <C-_><C-_> gcc
-vmap <C-_><C-_> gc
-" nnoremap <c-_><c-_> gcc
-noremap gb :GBranches<CR>
-noremap go :Git<CR>
-noremap <A-1> 1gt
-noremap <A-2> 2gt
-noremap <A-3> 3gt
-noremap <A-4> 4gt
-noremap <A-5> 5gt
-noremap <A-6> 6gt
-
 " Alt mappings {{{1
 nnoremap <silent> <A-d> :set hlsearch!<CR>
-set nohlsearch
 nnoremap <A-t> :call ToggleBackground()<CR>
 nnoremap <A-T> :call ToggleBackgroundForce()<CR>
 
@@ -212,8 +102,6 @@ endif
 
 " Vim Folding {{{1
 hi Folded ctermbg=Black ctermfg=DarkBlue
-set foldmethod=syntax
-set foldlevelstart=99
 
 augroup vimrc
   autocmd FileType vim setlocal foldmethod=marker
@@ -356,39 +244,12 @@ let g:ale_pattern_options = {
 let g:ale_fix_on_save = 0
 
 " {{{1 Language server
-
-set completeopt=menuone,noselect
-" autocmd Filetype elixir,eelixir,css,scss,javascript,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-" Code formatting on save
-" augroup rust.vim.PreWrite
-"     autocmd!
-"     " autocmd BufWritePre *.rs silent! call rustfmt#PreWrite()
-"     autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
-" augroup END
-
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set fillchars=fold:\ 
 highlight Folded ctermfg=10
 
-set textwidth=0
-set cursorline
-set nospell
-
 autocmd BufNewFile,BufRead *.eta setfiletype html
-
-" Lua migration {{{1
-
-lua <<EOF
- require('tools.main')
-EOF
 
 " inspect
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
-
-lua require('Comment').setup()

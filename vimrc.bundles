@@ -14,18 +14,13 @@ else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 
-Plug 'EdenEast/nightfox.nvim'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'github/copilot.vim'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-dispatch'
@@ -33,7 +28,6 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
-Plug 'mfussenegger/nvim-dap'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -48,16 +42,8 @@ Plug 'prettier/vim-prettier', {
     \ 'ruby',
     \ 'html' ] }
 
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'stevearc/oil.nvim'
-
 " Experiment
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-neorg/neorg', { 'do': ':Neorg sync-parsers', 'on': 'Neorg' }
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -67,11 +53,8 @@ endif
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'yssl/QFEnter'
 
