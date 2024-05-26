@@ -24,3 +24,5 @@ vim.opt_global.cursorline = true
 vim.opt_global.spell = false
 vim.opt_global.pumheight = 20 -- Maximum number of items to show in the popup menu
 vim.opt_global.completeopt={'menuone','noselect'}
+vim.opt_global.foldmethod= 'syntax'
+vim.opt_global.foldlevelstart=99
