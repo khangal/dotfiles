@@ -3,7 +3,7 @@ require'nvim-treesitter.configs'.setup {
   -- ignore_install = { "vim" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "txt" },  -- list of language that will be disabled
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -46,15 +46,20 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
-  --
-  -- context_commentstring = {
-  --   enable = true,
-  --   config = {
-  --     typescript = { __default = '// %s', __multiline = '/* %s */' }
-  --   }
-  -- }
-  --
-  -- context_commentstring = {
-  --   enable = true
-  -- }
 }
+
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
+
+-- lua require('Comment').setup()
+-- neovim 0.10 needs this
+require('Comment').setup { pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook() }
+vim.g.skip_ts_context_commentstring_module = true
+--
+-- local get_option = vim.filetype.get_option
+-- vim.filetype.get_option = function(filetype, option)
+--   return option == "commentstring"
+--     and require("ts_context_commentstring.internal").calculate_commentstring()
+--     or get_option(filetype, option)
+-- end

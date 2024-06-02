@@ -1,0 +1,61 @@
+if &compatible
+  set nocompatible
+end
+
+let g:has_async = v:version >= 800 || has('nvim')
+
+call plug#begin('~/.vim/bundle')
+
+" If fzf has already been installed via Homebrew, use the existing fzf
+" Otherwise, install fzf. The `--all` flag makes fzf accessible outside of vim
+if isdirectory("/usr/local/opt/fzf")
+  Plug '/usr/local/opt/fzf'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
+
+Plug 'mattn/emmet-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'github/copilot.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': [
+    \ 'javascript',
+    \ 'css',
+    \ 'scss',
+    \ 'json',
+    \ 'xml',
+    \ 'vue',
+    \ 'python',
+    \ 'ruby',
+    \ 'html' ] }
+
+" Experiment
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'nvim-neorg/neorg', { 'do': ':Neorg sync-parsers', 'on': 'Neorg' }
+Plug 'norcalli/nvim-colorizer.lua'
+
+if g:has_async
+  Plug 'dense-analysis/ale'
+endif
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/fzf.vim'
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-surround'
+Plug 'yssl/QFEnter'
+
+call plug#end()
