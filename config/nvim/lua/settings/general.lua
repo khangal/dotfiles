@@ -16,9 +16,9 @@ vim.opt_global.iminsert = 0
 vim.opt_global.imsearch = -1
 vim.opt_global.termguicolors = true
 vim.opt_global.hlsearch = false
-vim.opt_global.foldmethod = 'expr'
-vim.opt_global.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt_global.fillchars = { fold = ' ' }
+-- vim.opt_global.foldmethod = 'expr'
+-- vim.opt_global.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt_global.fillchars = { fold = ' ' }
 vim.opt_global.textwidth = 0
 vim.opt_global.cursorline = true
 vim.opt_global.spell = false
