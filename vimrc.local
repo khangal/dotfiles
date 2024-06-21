@@ -244,6 +244,9 @@ let g:ale_pattern_options = {
 let g:ale_fix_on_save = 0
 
 " {{{1 Language server
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set fillchars=fold:\ 
 highlight Folded ctermfg=10
 
 autocmd BufNewFile,BufRead *.eta setfiletype html

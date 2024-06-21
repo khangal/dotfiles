@@ -33,10 +33,10 @@ vim.api.nvim_set_keymap('i', '<C-e>', '<C-o>$', {})
 vim.api.nvim_set_keymap('i', '<C-a>', '<C-o>^', {})
 
 -- Search word under cursor
-vim.api.nvim_set_keymap('n', '<silent><Leader>kw', ':S <C-r><C-w><CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<silent><Leader>ke', ':S <C-r><C-w><CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<Leader>kw', ':S <C-r><C-w><CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<Leader>ke', ':S <C-r><C-w><CR>', {noremap = true})
 -- Search current file
-vim.api.nvim_set_keymap('n', '<silent><Leader>kf', ':S %:t:r<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<Leader>kf', ':S %:t:r<CR>', {noremap = true})
 
 -- Paste and yank mappings
 vim.api.nvim_set_keymap('n', '<Leader>p', ':set paste<CR><Esc>"+p:set nopaste<CR>:retab<CR>', {})
@@ -54,3 +54,16 @@ vim.api.nvim_set_keymap('n', '<A-3>', '3gt', {})
 vim.api.nvim_set_keymap('n', '<A-4>', '4gt', {})
 vim.api.nvim_set_keymap('n', '<A-5>', '5gt', {})
 vim.api.nvim_set_keymap('n', '<A-6>', '6gt', {})
+
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = "Toggle Spectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
