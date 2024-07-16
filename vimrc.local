@@ -57,6 +57,7 @@ command! -nargs=0 -bar ToggleQuickFix call ToggleQuickFix()
 command! -bang -nargs=? -complete=dir ProjectFiles call fzf#vim#files(<q-args>, <bang>0)
 
 nnoremap yoq :ToggleQuickFix<CR>
+imap <silent><expr> <S-Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<S-Tab>' 
 
 " Alt mappings {{{1
 nnoremap <silent> <A-d> :set hlsearch!<CR>
@@ -71,7 +72,6 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
-
 
 " Functions {{{1
 function! g:JsThisMap()
@@ -131,13 +131,13 @@ augroup END
 " Bundle configs {{{1
 " vim-test {{{2
 " jank/vim-test and mfussenegger/nvim-dap
-nnoremap <leader>dd :TestNearest -strategy=jest<CR>
-function! JestStrategy(cmd)
-  let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
-  let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
-  call luaeval("require'tools.debugHelper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
-endfunction      
-let g:test#custom_strategies = {'jest': function('JestStrategy')}
+nnoremap <leader>dd :TestNearest<CR>
+" function! JestStrategy(cmd)
+"   let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
+"   let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
+"   call luaeval("require'tools.debugHelper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
+" endfunction      
+" let g:test#custom_strategies = {'jest': function('JestStrategy')}
 
 let test#strategy = "neovim"
 " let test#javascript#jest#executable = "docker exec --tty bbzz-api yarn test"
@@ -187,8 +187,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Ultisnips {{{2
-let g:UltiSnipsExpandTrigger = "<s-tab>"
-inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
+" let g:UltiSnipsExpandTrigger = "<s-tab>"
+" inoremap <c-j> <C-R>=UltiSnips#ListSnippets()<cr>
 
 " Fzf {{{2
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"

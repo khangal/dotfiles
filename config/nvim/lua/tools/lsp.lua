@@ -146,6 +146,23 @@ require("lspconfig")["gopls"].setup({
   }
 })
 
+require("lspconfig")["pyright"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  }
+})
+
+require("lspconfig")["tailwindcss"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {}
+})
+
 
 require("lspconfig").lua_ls.setup {
   on_attach = on_attach,

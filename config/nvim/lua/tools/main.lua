@@ -35,3 +35,22 @@ require('tools.treesitter')
 require('tools.dap')
 require('tools.neorg')
 require('tools.mason')
+require('tools.luasnip')
+
+-- Function to toggle Copilot state
+function ToggleCopilot()
+  -- Check if Copilot is currently enabled
+  local copilot_status = vim.fn['copilot#Enabled']()
+  
+  if copilot_status == 1 then
+    -- Copilot is enabled, so disable it
+    vim.cmd('Copilot disable')
+  else
+    -- Copilot is disabled, so enable it
+    vim.cmd('Copilot enable')
+  end
+end
+
+-- Create a Neovim command to toggle Copilot
+vim.api.nvim_create_user_command('CopilotToggle', ToggleCopilot, {})
+vim.api.nvim_set_keymap('n', 'yos', ':CopilotToggle<CR>', { noremap = true, silent = true })
