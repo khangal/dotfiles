@@ -157,6 +157,11 @@ require("lspconfig")["pyright"].setup({
   }
 })
 
+require("lspconfig")["tailwindcss"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {}
+})
 
 
 require("lspconfig").lua_ls.setup {

@@ -1,42 +1,42 @@
-# snippet contentfor "Wrap the selected text with content_for block" b
-# <% content_for :$1 do %>
-# ${0:${VISUAL:# assertions...}}
-# <% end %>
+# # snippet contentfor "Wrap the selected text with content_for block" b
+# # <% content_for :$1 do %>
+# # ${0:${VISUAL:# assertions...}}
+# # <% end %>
+# # endsnippet
+#
+# # some necessary ugliness from
+# # https://github.com/honza/vim-snippets/blob/master/UltiSnips/eruby.snippets
+# global !p
+# def textmate_var(var, snip):
+# 	lookup = dict(
+# 		TM_RAILS_TEMPLATE_START_RUBY_EXPR = snip.opt('g:tm_rails_template_start_ruby_expr', '<%= '),
+# 		TM_RAILS_TEMPLATE_END_RUBY_EXPR = snip.opt('g:tm_rails_template_end_ruby_expr', ' %>'),
+# 		TM_RAILS_TEMPLATE_START_RUBY_INLINE = snip.opt('g:tm_rails_template_start_ruby_inline', '<% '),
+# 		TM_RAILS_TEMPLATE_END_RUBY_INLINE = snip.opt('g:tm_rails_template_end_ruby_inline', ' %>'),
+# 		TM_RAILS_TEMPLATE_END_RUBY_BLOCK = '<% end %>'
+# 	)
+# 	snip.rv = lookup[var]
+# 	return
+# endglobal
+#
+# snippet bt "button_to (name, dest)" w
+# `!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`button_to "${1:link text...}", ${2:dest}`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_EXPR', snip)`
 # endsnippet
-
-# some necessary ugliness from
-# https://github.com/honza/vim-snippets/blob/master/UltiSnips/eruby.snippets
-global !p
-def textmate_var(var, snip):
-	lookup = dict(
-		TM_RAILS_TEMPLATE_START_RUBY_EXPR = snip.opt('g:tm_rails_template_start_ruby_expr', '<%= '),
-		TM_RAILS_TEMPLATE_END_RUBY_EXPR = snip.opt('g:tm_rails_template_end_ruby_expr', ' %>'),
-		TM_RAILS_TEMPLATE_START_RUBY_INLINE = snip.opt('g:tm_rails_template_start_ruby_inline', '<% '),
-		TM_RAILS_TEMPLATE_END_RUBY_INLINE = snip.opt('g:tm_rails_template_end_ruby_inline', ' %>'),
-		TM_RAILS_TEMPLATE_END_RUBY_BLOCK = '<% end %>'
-	)
-	snip.rv = lookup[var]
-	return
-endglobal
-
-snippet bt "button_to (name, dest)" w
-`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`button_to "${1:link text...}", ${2:dest}`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_EXPR', snip)`
-endsnippet
-
-snippet fw "form_with"
-`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with model: @${1:model} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
-  $0
-`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
-endsnippet
-
-snippet fwu "form_with url"
-`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with url: ${1:url} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
-  $0
-`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
-endsnippet
-
-snippet each "ActiveRecord each"
-`!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_INLINE', snip)`${1:collection}.each do |${2:singular}| `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
-  $0
-`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
-endsnippet
+#
+# snippet fw "form_with"
+# `!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with model: @${1:model} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+#   $0
+# `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+# endsnippet
+#
+# snippet fwu "form_with url"
+# `!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_EXPR', snip)`form_with url: ${1:url} do |f|`!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+#   $0
+# `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+# endsnippet
+#
+# snippet each "ActiveRecord each"
+# `!p textmate_var('TM_RAILS_TEMPLATE_START_RUBY_INLINE', snip)`${1:collection}.each do |${2:singular}| `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_INLINE', snip)`
+#   $0
+# `!p textmate_var('TM_RAILS_TEMPLATE_END_RUBY_BLOCK', snip)`
+# endsnippet
