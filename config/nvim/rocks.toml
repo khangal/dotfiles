@@ -11,15 +11,15 @@
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"rocks.nvim" = "2.28.0" # rocks.nvim can also manage itself :D
-neorg = "8.5.0"
-"nightfox.nvim" = "3.9.3"
+"rocks.nvim" = "2.36.0"
+neorg = "9.0.3"
+"nightfox.nvim" = "3.10.0"
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.29.0"
 "comment.nvim" = "0.8.0"
 nvim-lspconfig = "0.1.8"
-nvim-dap = "0.7.0"
-"oil.nvim" = "2.9.0"
+nvim-dap = "0.8.0"
+"oil.nvim" = "2.11.0"
 "plenary.nvim" = "scm"
 cmp-nvim-lsp = "scm"
 cmp-path = "scm"
