@@ -7,7 +7,7 @@ require("dap").adapters["pwa-node"] = {
   executable = {
     command = "node",
     -- 💀 Make sure to update this path to point to your installation
-    args = {"/home/khangal/daps/js-debug/src/dapDebugServer.js", "${port}"},
+    args = {"/home/khangal/Downloads/js-debug/src/dapDebugServer.js", "${port}"},
   }
 }
 
@@ -47,3 +47,18 @@ require("dap").configurations.typescript = {
     cwd = "${workspaceFolder}",
   },
 }
+
+
+-- local dapui = require("dapui")
+-- dap.listeners.before.attach.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.launch.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated.dapui_config = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited.dapui_config = function()
+--   dapui.close()
+-- end
