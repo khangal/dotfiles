@@ -28,3 +28,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[credential "https://git.and.global"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential

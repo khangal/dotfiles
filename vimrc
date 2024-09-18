@@ -82,7 +82,8 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" Use RipGrep
+" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+" " Use RipGrep
 if executable('rg')
   " Use Rg over Grep
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -98,7 +99,7 @@ endif
 
 " Make it obvious where 80 characters is
 " set textwidth=80
-set colorcolumn=+1
+" set colorcolumn=+1
 
 " Numbers
 set number
