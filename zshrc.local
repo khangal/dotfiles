@@ -18,8 +18,6 @@ bindkey -M vicmd 'y' vi-yank-xclip
 
 export EDITOR=nvim
 
-export SILENCE_RBENV_DEPRECATION=1
-
 export FZF_DEFAULT_COMMAND="ag -l"
 
 export PATH=$HOME/bin:$PATH
@@ -32,8 +30,8 @@ export TERM=screen-256color
 # cd-path
 setopt auto_cd
 setopt cdable_vars
-cdpath=($HOME/work;$HOME/zshcd,$HOME/work/andex,$HOME/work/andex/olympus/apps)
-export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex:$HOME/work/andex/olympus/apps:$HOME/work/andex/olympus/libs/
+cdpath=($HOME/work;$HOME/zshcd,$HOME/work/andex,$HOME/work/andex/olympus/apps,$HOME/trinkets/woody)
+export CDPATH=$HOME/work:$HOME/zshcd:$HOME/work/andex:$HOME/work/andex/olympus/apps:$HOME/work/andex/olympus/libs/:$HOME/trinkets/woody
 
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word
@@ -61,11 +59,3 @@ starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
 }
-
-# export PATH="$(yarn global bin):$PATH"
-source ~/dotfiles/antigen.zsh
-
-antigen bundle lukechilds/zsh-nvm
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
-# [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)

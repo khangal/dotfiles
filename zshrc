@@ -4,6 +4,7 @@
 for function in ~/.zsh/functions/*; do
   source $function
 done
+setopt extendedglob
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
@@ -45,7 +46,7 @@ _load_settings "$HOME/.zsh/configs"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/khangal/.local/bin/mc mc
+# complete -o nospace -C /home/khangal/.local/bin/mc mc
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # Generated for envman. Do not edit.
@@ -70,3 +71,4 @@ esac
 # pnpm end
 
 source <(kubectl completion zsh)
+eval "$(~/.local/bin/mise activate zsh)"

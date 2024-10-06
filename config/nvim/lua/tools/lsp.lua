@@ -5,7 +5,6 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 
-
   -- -- Mappings.
   -- local opts = { noremap=true, silent=true }
   -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -108,7 +107,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-require("lspconfig")["tsserver"].setup({
+require("lspconfig")["ts_ls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -117,6 +116,12 @@ require("lspconfig")["tsserver"].setup({
       description = "Organize Imports"
     }
   }
+})
+
+require("lspconfig")["elixirls"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "/Users/khangal/.local/share/nvim/mason/bin/elixir-ls" };
 })
 
 require("lspconfig")["rust_analyzer"].setup({

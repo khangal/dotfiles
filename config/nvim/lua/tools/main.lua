@@ -23,8 +23,6 @@ require("oil").setup({
   },
 })
 
-require("mason").setup()
-require("mason-lspconfig").setup()
 require('Comment').setup()
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
