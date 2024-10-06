@@ -1,1 +1,40 @@
 extends javascript
+
+snippet hh "hono handler"
+	import { zValidator } from "@hono/zod-validator"
+	import { Hono } from "hono"
+	import z from "zod"
+
+	const ${1:${VISUAL}}Api = new Hono()
+
+	$2
+
+	export default $1Api
+
+snippet hg "hono get"
+	authGoogleApi.get(
+		"${1:${VISUAL}}",
+		zValidator(
+			"query",
+			z.object({
+				foo: z.string(),
+			}),
+		),
+		async (c) => {
+			return c.json({ hello: "world" })
+		},
+	)
+
+snippet hp "hono post"
+	authGoogleApi.post(
+		"${1:${VISUAL}}",
+		zValidator(
+			"query",
+			z.object({
+				foo: z.string(),
+			}),
+		),
+		async (c) => {
+			return c.json({ hello: "world" })
+		},
+	)
