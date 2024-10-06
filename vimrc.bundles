@@ -58,6 +58,9 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'yssl/QFEnter'
 
 call plug#end()

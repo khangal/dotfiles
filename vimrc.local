@@ -257,3 +257,9 @@ autocmd BufNewFile,BufRead *.eta setfiletype html
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
+
+let g:db_ui_execute_on_save = '0'
+
+" autocmd FileType sql map <buffer> <C-Enter> <Plug>(DBUI_ExecuteQuery)
+
+autocmd FileType sql vmap <buffer> <C-k> <Plug>(DBUI_ExecuteQuery)
