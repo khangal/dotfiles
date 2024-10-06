@@ -107,7 +107,7 @@ schemes:
       - { index: 16, color: '0xd7827e' }
       - { index: 17, color: '0xd685af' }
 
-colors: *dayfox
+colors: *nightfox
 
 cursor:
   style:
