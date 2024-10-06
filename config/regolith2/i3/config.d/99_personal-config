@@ -1,8 +1,0 @@
-## PrintScreen: selection
-## Ctrl+PrintScreen: window
-## Ctrl+Shift+PrintScreen: screen
-bindsym --release Ctrl+Print exec --no-startup-id "gnome-screenshot"
-bindsym --release Ctrl+$mod+Shift+x exec --no-startup-id "gnome-screenshot -a"
-bindsym --release Print exec --no-startup-id "gnome-screenshot -f /tmp/ss.png && xclip /tmp/ss.png -selection clipboard -target image/png; rm /tmp/ss.png"
-bindsym --release $mod+Shift+x exec --no-startup-id "gnome-screenshot -af /tmp/ss.png && xclip /tmp/ss.png -selection clipboard -target image/png; rm /tmp/ss.png"
-## bindsym --release Ctrl+Shift+Print exec --no-startup-id "scrot - | xclip -selection clipboard -target image/png"
