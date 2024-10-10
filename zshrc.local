@@ -23,7 +23,6 @@ export FZF_DEFAULT_COMMAND="ag -l"
 export PATH=$HOME/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/software/idea/bin:$PATH"
-export BAT_THEME="base16"
 export SOLARIZED=dark
 export TERM=screen-256color
 
@@ -59,14 +58,6 @@ starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
 }
-
-# export PATH="$(yarn global bin):$PATH"
-source ~/dotfiles/antigen.zsh
-
-antigen bundle lukechilds/zsh-nvm
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
-# [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 source <(kubectl completion zsh)
 eval "$(~/.local/bin/mise activate zsh)"

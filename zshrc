@@ -6,6 +6,10 @@ for function in ~/.zsh/functions/*; do
 done
 setopt extendedglob
 
+# fpath+=${ZDOTDIR:-~}/.zsh/completion
+# autoload -Uz compinit
+# compinit
+
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
@@ -39,13 +43,14 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/.env.zsh ]] && source ~/.env.zsh
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /home/khangal/.local/bin/mc mc
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 

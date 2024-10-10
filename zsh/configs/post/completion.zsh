@@ -1,6 +1,9 @@
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
+# autoload -Uz compinit
+# compinit
+
 # completion; use cache if updated within 24h
 autoload -Uz compinit
 if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
