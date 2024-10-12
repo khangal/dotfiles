@@ -107,6 +107,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+require("lspconfig")["denols"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  },
+  root_dir = nvim_lsp.util.root_pattern("deno.jsonc", "deno.json", "deno.lock"),
+})
+
 require("lspconfig")["ts_ls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -115,7 +127,9 @@ require("lspconfig")["ts_ls"].setup({
       organize_imports,
       description = "Organize Imports"
     }
-  }
+  },
+  root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "tsconfig.json"),
+  single_file_support = false
 })
 
 require("lspconfig")["elixirls"].setup({
