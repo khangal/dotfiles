@@ -156,7 +156,7 @@ require("lspconfig")["rust_analyzer"].setup({
 
 require("lspconfig")["gopls"].setup({
   on_attach = on_attach,
-  capabilities = capabilities,
+  -- capabilities = capabilities,
   commands = {
     OrganizeImports = {
       organize_imports,

@@ -31,3 +31,6 @@ require('neorg').setup {
     },
   },
 }
+
+vim.api.nvim_del_keymap('n', '\\nn')
+vim.keymap.set("n", "<Leader>n", "<Plug>(neorg.dirman.new-note)", {})
