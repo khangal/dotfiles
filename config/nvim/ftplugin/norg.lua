@@ -1,3 +1,5 @@
+vim.treesitter.start(vim.fn.bufnr(), 'norg')
+
 local function convert_to_square_brackets(lines)
   local task_map = {
     ["- (-)"] = "- [ ]",

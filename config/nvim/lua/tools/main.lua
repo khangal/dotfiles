@@ -36,6 +36,8 @@ require('tools.dap')
 require('tools.neorg')
 require('tools.mason')
 require('tools.luasnip')
+require('tools.copilot')
+require('tools.rocks')
 
 -- Function to toggle Copilot state
 function ToggleCopilot()
