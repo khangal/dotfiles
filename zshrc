@@ -48,7 +48,8 @@ _load_settings "$HOME/.zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(/opt/homebrew/bin/fzf --zsh)
 
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /home/khangal/.local/bin/mc mc
