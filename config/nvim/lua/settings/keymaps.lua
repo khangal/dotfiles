@@ -68,6 +68,15 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
     desc = "Search on current file"
 })
 
+-- run :CopilotChat
+vim.keymap.set('n', '<leader>c', '<cmd>CopilotChatToggle<CR>', {
+    desc = "Open Copilot Chat"
+})
+
+vim.keymap.set('v', '<leader>c', '<cmd>CopilotChatToggle<CR>', {
+    desc = "Open Copilot Chat"
+})
+
 -- local ls = require("luasnip")
 --
 -- vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
