@@ -12,7 +12,7 @@
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
 "rocks.nvim" = "2.28.0" # rocks.nvim can also manage itself :D
-neorg = "8.5.0"
+neorg = "9.1.1"
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.29.0"
 "comment.nvim" = "0.8.0"
