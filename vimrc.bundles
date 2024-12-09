@@ -63,7 +63,6 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'yssl/QFEnter'
 Plug 'zbirenbaum/copilot.lua'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim'
 
 call plug#end()
