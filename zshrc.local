@@ -71,7 +71,6 @@ source ~/dotfiles/antigen.zsh
 # [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 source <(kubectl completion zsh)
-eval "$(~/.local/bin/mise activate zsh)"
 
 alias ls='eza'
 alias l='eza -lbF --git'

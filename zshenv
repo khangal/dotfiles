@@ -28,4 +28,3 @@ fi
 
 unset _old_path
 . "$HOME/.cargo/env"
-source "/home/khangal/.rover/env"

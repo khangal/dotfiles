@@ -9,10 +9,10 @@ require("CopilotChat").setup {
       normal = 'q',
       insert = '<C-c>',
     },
-    reset = {
-      normal = 'gl',
-      insert = 'gl',
-    },
+    -- reset = {
+      -- normal = 'gl',
+      -- insert = 'gl',
+    -- },
     submit_prompt = {
       normal = '<CR>',
       insert = '<C-s>',
@@ -21,10 +21,9 @@ require("CopilotChat").setup {
       detail = 'Makes line under cursor sticky or deletes sticky line.',
       normal = 'gr',
     },
-    accept_diff = {
-      normal = 'go',
-      insert = 'go'
-    },
+    -- accept_diff = {
+    --   normal = 'go'
+    -- },
     jump_to_diff = {
       normal = 'gj',
     },
@@ -38,13 +37,10 @@ require("CopilotChat").setup {
     show_diff = {
       normal = 'gd',
     },
-    show_system_prompt = {
+    show_info = {
       normal = 'gp',
     },
-    show_user_selection = {
-      normal = 'gs',
-    },
-    show_user_context = {
+    show_context = {
       normal = 'gc',
     },
     show_help = {

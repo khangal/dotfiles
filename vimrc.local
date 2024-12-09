@@ -5,7 +5,7 @@ set t_ZR=^[[23m
 if !empty($VIM_COLORSCHEME)
     colorscheme $VIM_COLORSCHEME
 else
-    colorscheme nightfox
+   colorscheme tokyonight-night
 endif
 
 let maplocalleader = ","
