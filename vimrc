@@ -91,9 +91,9 @@ if executable('rg')
   " Use rg in fzf for listing files. Lightning fast and respects .gitignore
   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
-  if !exists(":S")
-    command! -nargs=+ -complete=file -bar S silent grep! <args> | cwindow | redraw!
-    nnoremap \ :S<SPACE>
+  if !exists(":Search")
+    command! -nargs=+ -complete=file -bar Search silent grep! <args> | cwindow | redraw!
+    nnoremap \ :Search<SPACE>
   endif
 endif
 

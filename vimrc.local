@@ -8,8 +8,6 @@ else
    colorscheme tokyonight-night
 endif
 
-let maplocalleader = ","
-
 iabbrev AR ActiveRecord
 
 augroup highlight_yank

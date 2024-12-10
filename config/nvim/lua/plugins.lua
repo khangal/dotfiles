@@ -43,7 +43,7 @@ return {
   'tpope/vim-dispatch',
   'tpope/vim-ragtag',
   'tpope/vim-unimpaired',
-  'tpope/vim-abolish',
+  -- { 'tpope/vim-abolish', cmd = { "Abolish", "Subvert" } },
   'tpope/vim-endwise',
   'mxsdev/nvim-dap-vscode-js',
   {
