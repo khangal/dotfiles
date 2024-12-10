@@ -1,4 +1,5 @@
-require('rocks.main')
+-- require('rocks.main')
+require("config.lazy")
 
 -- Source ~/.vimrc
 vim.cmd('source ~/.vimrc.bundles')

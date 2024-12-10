@@ -3,7 +3,7 @@ vim.api.nvim_command('nohl')
 if vim.fn.empty(vim.env.VIM_COLORSCHEME or '') == 0 then
     vim.cmd('colorscheme ' .. vim.env.VIM_COLORSCHEME)
 else
-    vim.cmd('colorscheme nightfox')
+    vim.cmd('colorscheme tokyonight-night')
 end
 
 vim.opt_global.relativenumber = true

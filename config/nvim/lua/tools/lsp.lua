@@ -120,7 +120,7 @@ require("lspconfig")["denols"].setup({
   root_dir = nvim_lsp.util.root_pattern("deno.jsonc", "deno.json", "deno.lock"),
 })
 
-require("lspconfig")["tsserver"].setup({
+require("lspconfig")["ts_ls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
