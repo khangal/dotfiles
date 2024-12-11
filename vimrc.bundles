@@ -1,5 +1,0 @@
-if &compatible
-  set nocompatible
-end
-
-let g:has_async = v:version >= 800 || has('nvim')

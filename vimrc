@@ -1,5 +1,11 @@
 set encoding=utf-8
 
+if &compatible
+  set nocompatible
+end
+
+let g:has_async = v:version >= 800 || has('nvim')
+
 " Leader
 let mapleader = " "
 

@@ -79,4 +79,48 @@ return {
   'yssl/QFEnter',
   'zbirenbaum/copilot.lua',
   'CopilotC-Nvim/CopilotChat.nvim',
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
+  {
+    "nvim-neorg/neorg",
+    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
+    config = true,
+    opts = {
+      load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.keybinds"] = {
+          config = {
+            default_keybinds = true,
+          },
+        },
+        ["core.concealer"] = {
+          config = {
+            icons = {
+              todo = {
+                done = {
+                  icon = "✔", -- Custom icon for completed tasks
+                },
+              },
+            },
+          },
+        }, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/Dropbox/notes",
+              tasks = "~/Dropbox/tasks",
+              me = "~/Dropbox/me",
+            },
+            default_workspace = "notes",
+            autodetect = true,
+            autochdir = true,
+          },
+        },
+      }
+    },
+  }
 }

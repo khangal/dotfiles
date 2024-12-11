@@ -47,21 +47,3 @@ _load_settings "$HOME/.zsh/configs"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/khangal/.local/bin/mc mc
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-
-# bun completions
-[ -s "/home/khangal/.bun/_bun" ] && source "/home/khangal/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/home/khangal/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac

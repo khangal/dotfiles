@@ -2,7 +2,7 @@
 require("config.lazy")
 
 -- Source ~/.vimrc
-vim.cmd('source ~/.vimrc.bundles')
+-- vim.cmd('source ~/.vimrc.bundles')
 vim.cmd('source ~/.vimrc')
 
 -- Load general settings
@@ -12,4 +12,3 @@ require('settings.general')
 require('settings.keymaps')
 
 require('tools.main')
-

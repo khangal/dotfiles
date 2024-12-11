@@ -8,14 +8,14 @@ vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F5>', '<Plug>NetrwRefresh', {})
 
 -- Convenience mappings
-vim.api.nvim_set_keymap('n', '<Leader>ci', ':source ~/.vimrc.local<CR>:source ~/.vimrc.bundles<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>ci', ':source ~/.vimrc.local<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>bi', ':source ~/.vimrc.local<CR>:PlugInstall<CR>', {})
 
 -- Quick open mappings
 vim.api.nvim_set_keymap('n', '<Leader>vo', ':tabe ~/dotfiles<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vt', ':tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vi', ':tabe ~/dotfiles/vimrc.local<CR>:vsplit ~/dotfiles/config/nvim/lua/settings/general.lua<CR><C-w><C-w>:lcd %:p:h<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>vb', ':tabe ~/dotfiles/vimrc.bundles<CR>:vsplit ~/dotfiles/config/nvim/rocks.toml<CR><C-w><C-w>:lcd %:p:h<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>vb', ':tabe ~/dotfiles/config/nvim/lua/plugins.lua<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>q', ':tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vn', ':tabe ~/Dropbox/notes/index.norg<CR>:lcd %:p:h<CR>', {})
 
