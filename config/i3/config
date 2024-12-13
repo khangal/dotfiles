@@ -38,12 +38,17 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5 --max-volume 100 #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5 --max-volume 100 #decrease sound volume
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5 --max-volume 300 #increase sound volume
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5 --max-volume 300 #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 0.5
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- --limit 0.5
+# bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5 --max-volume 300 #increase sound volume
+# bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5 --max-volume 300 #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
+# Increase brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+
+# Decrease brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
