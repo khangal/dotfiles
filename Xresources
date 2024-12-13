@@ -87,7 +87,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt*perl-lib: /usr/lib/x86_64-linux-gnu/urxvt/perl
 
 UXTerm*faceName: CaskaydiaMono Nerd Font
-UXTerm*faceSize: 10  # You can adjust the size as needed
+UXTerm*faceSize: 13  # You can adjust the size as needed
 
 UXTerm*VT100.Translations: #override \
       Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\

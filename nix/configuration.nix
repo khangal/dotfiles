@@ -127,6 +127,11 @@
 
   programs.zsh.enable = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
+    nerd-fonts.caskaydia-mono
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
