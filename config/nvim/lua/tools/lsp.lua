@@ -129,7 +129,7 @@ require("lspconfig")["ts_ls"].setup({
       description = "Organize Imports"
     }
   },
-  root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "tsconfig.json"),
+  root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "tsconfig.json", ".eslintrc.json"),
   single_file_support = false
 })
 
@@ -171,12 +171,12 @@ require("lspconfig")["pyright"].setup({
   }
 })
 
-require("lspconfig")["tailwindcss"].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  commands = {}
-})
-
+-- require("lspconfig")["tailwindcss"].setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   commands = {}
+-- })
+--
 
 require("lspconfig").lua_ls.setup {
   on_attach = on_attach,

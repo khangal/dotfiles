@@ -1,0 +1,4 @@
+#!/bin/bash
+i3lock "$@"
+setxkbmap -layout us,mn
+setxkbmap -option 'grp:win_space_toggle'

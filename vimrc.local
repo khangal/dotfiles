@@ -5,7 +5,7 @@ set t_ZR=^[[23m
 if !empty($VIM_COLORSCHEME)
     colorscheme $VIM_COLORSCHEME
 else
-   colorscheme tokyonight-night
+    colorscheme tokyonight
 endif
 
 iabbrev AR ActiveRecord
@@ -219,12 +219,13 @@ let g:ale_lint_on_enter = 0
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = 'ℹ'
 highlight clear SignColumn
-let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+" let g:ale_linter_aliases = {'vue': ['vue', 'javascript'], 'deno': ['denols', 'deno']}
+" let g:ale_deno_lsp_project_root = '/home/khangal/work/andex/avenue'
 
-let g:ale_linters = {
-  \ 'vue': ['eslint', 'vls'],
-  \ 'go': ['gofmt'],
-  \ }
+" let g:ale_linters = {
+"   \ 'vue': ['eslint', 'vls'],
+"   \ 'go': ['gofmt'],
+"   \ }
 
 " \ 'typescriptreact': ['prettier', 'eslint'],
 " \ 'typescript': ['prettier', 'eslint', 'deno'],
@@ -238,13 +239,14 @@ let g:ale_fixers = {
    \ 'json': ['prettier'],
    \ 'go': ['gofmt'],
    \ 'typescript': ['prettier', 'eslint', 'deno'],
+   \ 'typescriptreact': ['prettier', 'eslint'],
    \ }
 
 " \ '*': ['prettier'],
 " let g:ale_fixers = ['prettier', 'eslint',' rubocop ']
-let g:ale_pattern_options = {
-\   '\.env$': {'ale_fixers': []},
-\}
+" let g:ale_pattern_options = {
+" \   '\.env$': {'ale_fixers': []},
+" \}
 let g:ale_fix_on_save = 0
 
 " {{{1 Language server
@@ -254,8 +256,8 @@ set fillchars=fold:\
 highlight Folded ctermfg=10
 
 autocmd BufNewFile,BufRead *.eta setfiletype html
-autocmd FileType typescript let b:ale_linter = ['eslint']
-autocmd FileType typescript let b:ale_fixer = ['eslint']
+" autocmd FileType typescript let b:ale_linter = ['eslint']
+" autocmd FileType typescript let b:ale_fixer = ['eslint']
 
 " inspect
 " for normal mode - the word under the cursor
@@ -269,3 +271,4 @@ autocmd FileType sql map <buffer> <C-Enter> <Plug>(DBUI_ExecuteQuery)
 
 autocmd FileType sql vmap <buffer> <C-k> <Plug>(DBUI_ExecuteQuery)
 " autocmd FileType vim nmap <Leader>db <Plug>VimspectorBreakpoints
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni

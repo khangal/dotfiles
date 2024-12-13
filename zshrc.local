@@ -62,12 +62,6 @@ starttransfer:  %{time_starttransfer}s\n\
         total:  %{time_total}s\n" "$@"
 }
 
-# export PATH="$(yarn global bin):$PATH"
-# source ~/dotfiles/antigen.zsh
-
-# antigen bundle lukechilds/zsh-nvm
-# antigen bundle zsh-users/zsh-autosuggestions
-# antigen apply
 # [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 source <(kubectl completion zsh)
