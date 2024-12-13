@@ -104,6 +104,9 @@
     };
     displayManager = {
       defaultSession = "none+i3";
+      sessionCommands = ''
+        xsetroot -solid "#1A1B26"
+      '';
     };
     windowManager.i3 = {
       enable = true;
@@ -126,6 +129,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.ssh.startAgent = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
