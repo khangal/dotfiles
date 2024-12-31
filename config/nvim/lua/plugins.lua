@@ -39,11 +39,18 @@ return {
   'github/copilot.vim',
   'honza/vim-snippets',
   'JoosepAlviste/nvim-ts-context-commentstring',
-  'Raimondi/delimitMate',
+  -- 'Raimondi/delimitMate',
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
   'tpope/vim-dispatch',
   'tpope/vim-ragtag',
   'tpope/vim-unimpaired',
-  -- { 'tpope/vim-abolish', cmd = { "Abolish", "Subvert" } },
+  { 'tpope/vim-abolish', cmd = { "Abolish", "Subvert" } },
   'tpope/vim-endwise',
   'mxsdev/nvim-dap-vscode-js',
   {
