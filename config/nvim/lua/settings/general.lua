@@ -26,3 +26,4 @@ vim.opt_global.pumheight = 20 -- Maximum number of items to show in the popup me
 vim.opt_global.completeopt={'menuone','noselect'}
 vim.opt_global.foldmethod= 'syntax'
 vim.opt_global.foldlevelstart=99
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

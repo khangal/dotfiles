@@ -56,6 +56,7 @@ command! -bang -nargs=? -complete=dir ProjectFiles call fzf#vim#files(<q-args>, 
 
 nnoremap yoq :ToggleQuickFix<CR>
 imap <silent><expr> <S-Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<S-Tab>' 
+" imap <silent><expr> <C-l> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-l>' 
 
 " Alt mappings {{{1
 nnoremap <silent> <A-d> :set hlsearch!<CR>
@@ -171,12 +172,13 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Enable Emmet just for HTML/CSS/ERB {{{2
 let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<C-l>'
+let g:user_emmet_mode='a'
+let g:user_emmet_complete_tag = 1
 augroup emmet
   autocmd FileType html,css,javascript,eruby,eco,php,htmljinja,eelixir,vue,typescriptreact EmmetInstall
 augroup END
-
-let g:user_emmet_expandabbr_key = '<C-l>'
-let g:user_emmet_complete_tag = 1
+imap <C-l> <Plug>(emmet-expand-abbr)
 
 " EasyAlign {{{2
 " Start interactive EasyAlign in visual mode (e.g. vipga)

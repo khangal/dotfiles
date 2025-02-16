@@ -1,7 +1,35 @@
 extends typescript
 
-snippet fc "functional component"
-	export const $1 = () => {
+snippet c "functional component"
+	export const ${1:${VISUAL}} = () => {
+		return (
+			<div>
+				${1:${VISUAL}}
+			</div>
+		);
+	}
+
+snippet c "component"
+	export const ${1:${VISUAL}} = () => {
+		return (
+			<div>
+				${1:${VISUAL}}
+			</div>
+		);
+	}
+
+snippet layout "layout"
+	export default function Layout({ children }: { children: React.ReactNode }) {
+		return (
+			<div>
+				{ children }
+				${1:${VISUAL}}
+			</div>
+		);
+	}
+
+snippet page "page"
+	export default function Page() {
 		return (
 			<div>
 				${1:${VISUAL}}
