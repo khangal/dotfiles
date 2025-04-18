@@ -105,8 +105,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 require("lspconfig")["denols"].setup({
   on_attach = on_attach,
@@ -133,23 +132,36 @@ require("lspconfig")["ts_ls"].setup({
   single_file_support = false
 })
 
-require("lspconfig")["rust_analyzer"].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  commands = {
-    OrganizeImports = {
-      organize_imports,
-      description = "Organize Imports"
-    }
-  },
-  cargo = {
-    buildScripts = {
-      enable = true,
-    },
-  }
-})
 
+require'lspconfig'.rust_analyzer.setup{
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}
+
+-- require("lspconfig")["rust_analyzer"].setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   commands = {
+--     OrganizeImports = {
+--       organize_imports,
+--       description = "Organize Imports"
+--     }
+--   },
+--   cargo = {
+--     buildScripts = {
+--       enable = true,
+--     },
+--   }
+-- })
+--
 require("lspconfig")["gopls"].setup({
+  capabilities = capabilities,
   on_attach = on_attach,
   -- capabilities = capabilities,
   commands = {

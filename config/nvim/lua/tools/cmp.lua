@@ -1,81 +1,81 @@
--- Setup nvim-cmp.
-local cmp = require'cmp'
-
--- function CustomCmdlineMappings()
---   -- Move up and down the list of completion items with <C-k> and <C-j>
---   vim.api.nvim_set_keymap('i', '<C-k>', 'pumvisible() ? "<C-n>" : "<C-k>"', {expr = true})
---   vim.api.nvim_set_keymap('i', '<C-j>', 'pumvisible() ? "<C-p>" : "<C-j>"', {expr = true})
-
---   -- Use <Tab> to select the next completion item
---   -- vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
--- end
-
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- require 'snippy'.expand_snippet(args.body)
-    end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<C-j>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }) },
-    ['<C-k>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }) },
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-    { name = 'buffer' },
-  })
-})
-
-cmp.setup.filetype('sql', {
-  sources = cmp.config.sources({
-    { name = 'vim-dadbod-completion' },
-    { name = 'buffer' },
-  })
-})
-
--- -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
-})
-
--- ends here
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  -- mapping = CustomCmdlineMappings(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  -- mapping = CustomCmdlineMappings(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
+-- -- Setup nvim-cmp.
+-- local cmp = require'cmp'
+--
+-- -- function CustomCmdlineMappings()
+-- --   -- Move up and down the list of completion items with <C-k> and <C-j>
+-- --   vim.api.nvim_set_keymap('i', '<C-k>', 'pumvisible() ? "<C-n>" : "<C-k>"', {expr = true})
+-- --   vim.api.nvim_set_keymap('i', '<C-j>', 'pumvisible() ? "<C-p>" : "<C-j>"', {expr = true})
+--
+-- --   -- Use <Tab> to select the next completion item
+-- --   -- vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
+-- -- end
+--
+-- cmp.setup({
+--   snippet = {
+--     -- REQUIRED - you must specify a snippet engine
+--     expand = function(args)
+--       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+--       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+--       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+--       -- require 'snippy'.expand_snippet(args.body)
+--     end,
+--   },
+--   window = {
+--     -- completion = cmp.config.window.bordered(),
+--     -- documentation = cmp.config.window.bordered(),
+--   },
+--   mapping = cmp.mapping.preset.insert({
+--     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+--     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--     ['<C-Space>'] = cmp.mapping.complete(),
+--     ['<C-e>'] = cmp.mapping.abort(),
+--     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+--     ['<C-j>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }) },
+--     ['<C-k>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }) },
+--   }),
+--   sources = cmp.config.sources({
+--     { name = 'nvim_lsp' },
+--     -- { name = 'vsnip' }, -- For vsnip users.
+--     -- { name = 'luasnip' }, -- For luasnip users.
+--     { name = 'ultisnips' }, -- For ultisnips users.
+--     -- { name = 'snippy' }, -- For snippy users.
+--   }, {
+--     { name = 'buffer' },
+--   })
+-- })
+--
+-- cmp.setup.filetype('sql', {
+--   sources = cmp.config.sources({
+--     { name = 'vim-dadbod-completion' },
+--     { name = 'buffer' },
+--   })
+-- })
+--
+-- -- -- Set configuration for specific filetype.
+-- cmp.setup.filetype('gitcommit', {
+--   sources = cmp.config.sources({
+--     { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+--   }, {
+--     { name = 'buffer' },
+--   })
+-- })
+--
+-- -- ends here
+--
+-- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline('/', {
+--   -- mapping = CustomCmdlineMappings(),
+--   sources = {
+--     { name = 'buffer' }
+--   }
+-- })
+--
+-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline(':', {
+--   -- mapping = CustomCmdlineMappings(),
+--   sources = cmp.config.sources({
+--     { name = 'path' }
+--   }, {
+--     { name = 'cmdline' }
+--   })
+-- })
