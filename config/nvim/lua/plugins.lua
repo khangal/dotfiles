@@ -31,9 +31,24 @@ return {
     }
   },
   {
+    "olimorris/codecompanion.nvim",
+     opts = {
+      --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
+      strategies = {
+        --NOTE: Change the adapter as required
+        chat = { adapter = "copilot" },
+        inline = { adapter = "copilot" },
+      },
+      opts = {
+        log_level = "DEBUG",
+      },
+    },
+  },
+  {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     dependencies = { 'rafamadriz/friendly-snippets' },
+    lazy = false,
 
     -- use a release tag to download pre-built binaries
     version = '1.*',
@@ -58,8 +73,7 @@ return {
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = { 
-        preset = 'default', 
-        ['<CR>'] = { 'accept' },
+        preset = 'enter', 
       },
 
       appearance = {
@@ -74,7 +88,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -85,6 +99,20 @@ return {
       fuzzy = { implementation = "prefer_rust_with_warning" }
     },
     opts_extend = { "sources.default" }
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- Required for Job and HTTP requests
+    },
+    -- comment the following line to ensure hub will be ready at the earliest
+    cmd = "MCPHub",  -- lazy load by default
+    build = "npm install -g mcp-hub@latest",  -- Installs required mcp-hub npm module
+    -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+    -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+    config = function()
+      require("mcphub").setup()
+    end,
   },
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
   'mattn/emmet-vim',
