@@ -16,7 +16,7 @@ vim.api.nvim_set_keymap('n', '<Leader>vo', ':tabe ~/dotfiles<CR>:lcd %:p:h<CR>',
 vim.api.nvim_set_keymap('n', '<Leader>vt', ':tabe ~/dotfiles/vimrc<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vi', ':tabe ~/dotfiles/vimrc.local<CR>:vsplit ~/dotfiles/config/nvim/lua/settings/general.lua<CR><C-w><C-w>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':tabe ~/dotfiles/config/nvim/lua/plugins.lua<CR>:lcd %:p:h<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>vm', ':tabe ~/Dropbox/maps-of-meaning.md<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>vm', ':tabe ~/Dropbox/notes/maps-of-meaning.md<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>q', ':tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vn', ':tabe ~/Dropbox/notes/index.norg<CR>:lcd %:p:h<CR>', {})
 
