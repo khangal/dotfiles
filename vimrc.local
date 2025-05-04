@@ -242,6 +242,7 @@ let g:ale_fixers = {
    \ 'go': ['gofmt'],
    \ 'typescript': ['prettier', 'eslint', 'deno'],
    \ 'typescriptreact': ['prettier', 'eslint'],
+   \ 'rust': ['rustfmt'],
    \ }
 
 " \ '*': ['prettier'],
