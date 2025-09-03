@@ -63,7 +63,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 ! Inconsolata
 ! URxvt*font: xft:inconsolata:regular:pixelsize=18
-URxvt*font: xft:inconsolata:regular:pixelsize=16
+URxvt*font: xft:inconsolata:regular:pixelsize=11
 
 ! URxvt.font: xft:ubuntu mono:pixelsize=12
 URxvt.termName : rxvt-unicode-256color
@@ -87,7 +87,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt*perl-lib: /usr/lib/x86_64-linux-gnu/urxvt/perl
 
 UXTerm*faceName: CaskaydiaMono Nerd Font
-UXTerm*faceSize: 13  # You can adjust the size as needed
+UXTerm*faceSize: 11  # You can adjust the size as needed
 
 UXTerm*VT100.Translations: #override \
       Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
