@@ -23,18 +23,17 @@ require("oil").setup({
   },
 })
 
--- require("mason").setup()
--- require("mason-lspconfig").setup()
 require('Comment').setup()
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- require('tools.mason')
 require('tools.lsp')
 require('tools.cmp')
 require('tools.treesitter')
 require('tools.dap')
-require('tools.neorg')
 require('tools.mason')
+require('tools.neorg')
 require('tools.luasnip')
 require('tools.copilot')
 require('tools.neorg')

@@ -153,6 +153,8 @@ let test#ruby#use_binstubs = 0
 
 let test#rust#cargotest#options = '-- --nocapture'
 
+
+nnoremap <leader>td <cmd>lua vim.lsp.buf.type_definition()<CR>
 " Goyo {{{2
 nnoremap <Leader>g :Goyo<CR>
 

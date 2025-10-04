@@ -1,7 +1,12 @@
 require("CopilotChat").setup {
-  debug = true, -- Enable debugging
+  -- debug = true, -- Enable debugging
   -- default mappings
   mappings = {
+    reset = {
+      normal = "",     -- remove the default <C-l> mapping in normal mode
+      insert = "",     -- remove it in insert mode
+      callback = function() end,  -- optional: no-op callback
+    },
     complete = {
       insert = '<Tab>',
     },

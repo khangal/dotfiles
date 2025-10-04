@@ -30,6 +30,7 @@ require('neorg').setup {
         autochdir = true,
       },
     },
+    ["core.norg.esupports.metagen"] = {},
   },
 }
 
