@@ -243,14 +243,14 @@ highlight clear SignColumn
 
 let g:ale_fixers = {
    \ 'vue': ['prettier', 'eslint'],
-   \ 'javascript': ['prettier', 'eslint'],
+   \ 'javascript': ['eslint', 'prettier'],
    \ 'ruby': ['rufo'],
    \ 'css': ['prettier'],
    \ 'xml': ['prettier'],
    \ 'json': ['prettier'],
    \ 'go': ['gofmt'],
-   \ 'typescript': ['prettier', 'eslint', 'deno'],
-   \ 'typescriptreact': ['prettier', 'eslint'],
+   \ 'typescript': ['eslint', 'prettier', 'deno'],
+   \ 'typescriptreact': ['eslint', 'prettier'],
    \ 'rust': ['rustfmt'],
    \ }
 
