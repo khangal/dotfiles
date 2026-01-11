@@ -19,7 +19,7 @@ return {
   },
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
-  { "neovim/nvim-lspconfig" },
+  "neovim/nvim-lspconfig",
   "nvim-lua/plenary.nvim",
   { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } },
   {

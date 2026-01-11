@@ -47,3 +47,7 @@ _load_settings "$HOME/.zsh/configs"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/khangal/.local/bin/mc mc
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# autoload -Uz edit-command-line
+# zle -N edit-command-line
+# bindkey -M vicmd 'I' edit-command-line
