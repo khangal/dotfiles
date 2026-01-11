@@ -42,11 +42,11 @@ _load_settings "$HOME/.zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/khangal/.local/bin/mc mc
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /home/khangal/.local/bin/mc mc
+# fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # autoload -Uz edit-command-line
 # zle -N edit-command-line

@@ -15,3 +15,6 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey "^Q" push-line-or-edit
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+
+bindkey '^I' expand-or-complete
+bindkey -M viins '^I' expand-or-complete

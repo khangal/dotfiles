@@ -1,0 +1,3 @@
+zcomp-refresh() {
+  rm -f ~/.zcompdump* && compinit
+}
