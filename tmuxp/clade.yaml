@@ -1,0 +1,22 @@
+session_name: clade
+
+windows:
+  - window_name: clade
+    panes:
+      - shell_command:
+          - cd ~/woody/clade-next
+          - pnpm run dev
+      - shell_command:
+          - cd ~/woody/clade-next
+          - turso dev -f src/db/clade-dev.db
+    layout: even-horizontal
+
+  # -------------------------
+  # Window 2: empty terminal
+  # -------------------------
+  - window_name: editor
+    focus: true
+    panes:
+      - shell_command:
+          - cd ~/woody/clade-next
+          - nvim .

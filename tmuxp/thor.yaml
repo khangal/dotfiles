@@ -1,0 +1,26 @@
+session_name: thor
+
+windows:
+  - window_name: thor
+    panes:
+      - shell_command:
+          - cd ~/work/asgard/thor
+          - pnpm run dev
+      - shell_command:
+          - cd ~/work/asgard/loki
+          - pnpm run dev
+    layout: even-horizontal
+
+  # -------------------------
+  # Window 2: empty terminal
+  # -------------------------
+  - window_name: editor
+    focus: true
+    panes:
+      - shell_command:
+          - cd ~/work/asgard/
+          - codex .
+      - shell_command:
+          - cd ~/work/asgard/thor
+          - nvim .
+    layout: even-horizontal
