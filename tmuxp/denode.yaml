@@ -1,0 +1,19 @@
+session_name: thor
+
+windows:
+  - window_name: thor
+    panes:
+      - shell_command:
+          - cd ~/work/andex/denode
+          - switch -p denode
+    layout: even-horizontal
+
+  # -------------------------
+  # Window 2: empty terminal
+  # -------------------------
+  - window_name: editor
+    focus: true
+    panes:
+      - shell_command:
+          - cd ~/work/andex
+    layout: even-horizontal
