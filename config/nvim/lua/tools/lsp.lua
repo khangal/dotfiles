@@ -1,4 +1,5 @@
 local util = require("lspconfig.util")
+local lspconfig = require("lspconfig")
 
 local function organize_imports()
   local client = vim.lsp.get_clients({ name = "ts_ls" })[1]
@@ -9,7 +10,7 @@ local function organize_imports()
   })
 end
 
-require'lspconfig'.lua_ls.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -29,13 +30,31 @@ require'lspconfig'.lua_ls.setup {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-vim.lsp.config('denols', {
+local deno_fmt_group = vim.api.nvim_create_augroup("DenoFormat", {})
+
+lspconfig.denols.setup({
   capabilities = capabilities,
-  root_markers = {"deno.json", "deno.jsonc"},
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+
+  on_attach = function(client, bufnr)
+    vim.api.nvim_clear_autocmds({ group = deno_fmt_group, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = deno_fmt_group,
+      buffer = bufnr,
+      desc = "Deno format on save",
+      callback = function()
+        vim.lsp.buf.format({
+          bufnr = bufnr,
+          async = false,
+          filter = function(c) return c.name == "denols" end,
+        })
+      end,
+    })
+  end,
 })
 
 -- Node/TS
-require("lspconfig").ts_ls.setup({
+lspconfig.ts_ls.setup({
   capabilities = capabilities,
   commands = {
     OrganizeImports = { organize_imports, description = "Organize Imports" },
@@ -90,7 +109,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-  end,
+  end
 })
 
 local function on_attach(client, bufnr)
@@ -239,7 +258,7 @@ local customizations = {
   { rule = '*semi', severity = 'off', fixable = true },
 }
 
-require'lspconfig'.eslint.setup(
+lspconfig.eslint.setup(
   {
     filetypes = {
       "javascript",

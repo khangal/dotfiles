@@ -1,0 +1,7 @@
+session_name: merlin
+
+windows:
+  - window_name: merlin
+    panes:
+      - shell_command:
+          - cd ~/trinkets/merlin/
