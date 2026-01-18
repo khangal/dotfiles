@@ -1,3 +1,5 @@
+local util = require("lspconfig.util")
+
 local function organize_imports()
   local client = vim.lsp.get_clients({ name = "ts_ls" })[1]
   client:exec_cmd({
@@ -27,20 +29,39 @@ require'lspconfig'.lua_ls.setup {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require("lspconfig")["ts_ls"].setup({
-  -- on_attach = function(client, bufnr)
-  -- end,
+vim.lsp.config('denols', {
+  capabilities = capabilities,
+  root_markers = {"deno.json", "deno.jsonc"},
+})
+
+-- Node/TS
+require("lspconfig").ts_ls.setup({
   capabilities = capabilities,
   commands = {
-    OrganizeImports = {
-      organize_imports,
-      description = "Organize Imports"
-    }
+    OrganizeImports = { organize_imports, description = "Organize Imports" },
   },
-  single_file_support = false
+  single_file_support = false,
 
--- require("lspconfig").ts_ls.setup({
+  -- IMPORTANT: don't start ts_ls in Deno projects
+  root_dir = function(fname)
+    -- if we're in a Deno root, return nil so ts_ls won't attach
+    if util.root_pattern("deno.json", "deno.jsonc")(fname) then
+      return nil
+    end
+    return util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")(fname)
+  end,
 })
+-- require("lspconfig")["ts_ls"].setup({
+--   capabilities = capabilities,
+--   commands = {
+--     OrganizeImports = {
+--       organize_imports,
+--       description = "Organize Imports"
+--     }
+--   },
+--   single_file_support = false,
+--   root_markers = {"package.json"}
+-- })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
