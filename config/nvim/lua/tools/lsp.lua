@@ -1,12 +1,29 @@
 local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
-local function organize_imports()
+local function ts_organize_imports()
   local client = vim.lsp.get_clients({ name = "ts_ls" })[1]
   client:exec_cmd({
     command = "_typescript.organizeImports",
     arguments = { vim.api.nvim_buf_get_name(0) },
     title = ""
+  })
+end
+
+local function deno_organize_imports()
+  vim.lsp.buf.code_action({
+    apply = true,
+    context = {
+      only = { "source.organizeImports" },
+      diagnostics = {},
+    },
+  })
+end
+
+local function lsp_on_attach(_, bufnr)
+  vim.keymap.set("n", "<Leader>o", "<Cmd>OrganizeImports<CR>", {
+    buffer = bufnr,
+    desc = "Organize Imports",
   })
 end
 
@@ -35,8 +52,14 @@ local deno_fmt_group = vim.api.nvim_create_augroup("DenoFormat", {})
 lspconfig.denols.setup({
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-
+  commands = {
+    OrganizeImports = {
+      deno_organize_imports,
+      description = "Deno: Organize Imports",
+    },
+  },
   on_attach = function(client, bufnr)
+    lsp_on_attach(client, bufnr)
     vim.api.nvim_clear_autocmds({ group = deno_fmt_group, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = deno_fmt_group,
@@ -57,9 +80,10 @@ lspconfig.denols.setup({
 lspconfig.ts_ls.setup({
   capabilities = capabilities,
   commands = {
-    OrganizeImports = { organize_imports, description = "Organize Imports" },
+    OrganizeImports = { ts_organize_imports, description = "Organize Imports" },
   },
   single_file_support = false,
+  on_attach=lsp_on_attach,
 
   -- IMPORTANT: don't start ts_ls in Deno projects
   root_dir = function(fname)

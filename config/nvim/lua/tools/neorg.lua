@@ -34,5 +34,16 @@ require('neorg').setup {
   },
 }
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "norg",
+  callback = function(ev)
+    vim.keymap.set(
+      "n",
+      "<Leader>n",
+      "<Plug>(neorg.dirman.new-note)",
+      { buffer = ev.buf, silent = true, desc = "Neorg: New note" }
+    )
+  end,
+})
 -- vim.api.nvim_del_keymap('n', '\\nn')
-vim.keymap.set("n", "<Leader>n", "<Plug>(neorg.dirman.new-note)", {})
+-- vim.keymap.set("n", "<Leader>n", "<Plug>(neorg.dirman.new-note)", {})

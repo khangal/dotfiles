@@ -27,7 +27,7 @@ vim.api.nvim_set_keymap('c', '\27[C', '<C-Right>', {})
 -- Run Elixir formatter
 vim.api.nvim_set_keymap('n', '<Leader>d', ':ALEFix<CR>', {})
 -- Run lsp optimize import
-vim.api.nvim_set_keymap('n', '<Leader>o', ':OrganizeImports<CR>', {})
+-- vim.api.nvim_set_keymap('n', '<Leader>o', ':OrganizeImports<CR>', {})
 
 -- Emacs-like beginning and end of line
 vim.api.nvim_set_keymap('i', '<C-e>', '<C-o>$', {})
