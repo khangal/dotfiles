@@ -1,0 +1,26 @@
+session_name: ib
+
+windows:
+  - window_name: ib
+    panes:
+      - shell_command:
+          - cd ~/work/andex/odin/
+      #     - pnpm run dev
+      # - shell_command:
+      #     - cd ~/work/andex/denode-monorepo/
+      #     - pnpm run dev
+    layout: even-horizontal
+
+  # -------------------------
+  # Window 2: empty terminal
+  # -------------------------
+  - window_name: editor
+    focus: true
+    panes:
+      - shell_command:
+          - cd ~/work/andex/odin/
+          - codex .
+      - shell_command:
+          - cd ~/work/andex/odin/
+          - nvim .
+    layout: even-horizontal

@@ -1,0 +1,26 @@
+session_name: broker
+
+windows:
+  - window_name: broker
+    panes:
+      - shell_command:
+          - cd ~/work/andex/mono/
+      #     - pnpm run dev
+      # - shell_command:
+      #     - cd ~/work/andex/denode-monorepo/
+      #     - pnpm run dev
+    layout: even-horizontal
+
+  # -------------------------
+  # Window 2: empty terminal
+  # -------------------------
+  - window_name: editor
+    focus: true
+    panes:
+      - shell_command:
+          - cd ~/work/andex/mono/
+          - codex .
+      - shell_command:
+          - cd ~/work/andex/mono/
+          - nvim .
+    layout: even-horizontal

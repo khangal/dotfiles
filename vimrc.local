@@ -158,15 +158,19 @@ nnoremap <leader>td <cmd>lua vim.lsp.buf.type_definition()<CR>
 " Goyo {{{2
 nnoremap <Leader>g :Goyo<CR>
 
-let g:goyo_width = 130
-let g:goyo_linenr = 1
-
 function! s:goyo_enter()
-  set cursorline
+  setlocal cursorline
+  setlocal wrap
+  setlocal linebreak
+  setlocal breakindent
+  setlocal textwidth=0
 endfunction
 
 function! s:goyo_leave()
-  set cursorline!
+  setlocal cursorline!
+  setlocal nowrap
+  setlocal nolinebreak
+  setlocal nobreakindent
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
