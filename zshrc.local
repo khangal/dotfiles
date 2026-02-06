@@ -33,7 +33,7 @@ export TERM=screen-256color
 setopt auto_cd
 setopt cdable_vars
 # cdpath=($HOME/work/andex/denode-monorepo/;$HOME/work/asgard;$HOME/zshcd,$HOME/work/andex,$HOME/work/andex/olympus/apps)
-export CDPATH=$HOME/work:$HOME/work/andex/mono/apps:$HOME/zshcd:$HOME/work/andex:$HOME/work/andex/olympus/apps:$HOME/work/andex/olympus/libs/:$HOME/trinkets
+export CDPATH=$HOME/work:$HOME/work/andex/mono/apps:$HOME/work/andex/atlas/apps:$HOME/zshcd:$HOME/work/andex:$HOME/work/andex/olympus/apps:$HOME/work/andex/olympus/libs/:$HOME/trinkets
 
 # CTRL + arrow keys
 bindkey "^[[1;5D" backward-word

@@ -1,14 +1,14 @@
-session_name: ib
+session_name: atlas
 
 windows:
-  - window_name: ib
+  - window_name: atlas
     panes:
       - shell_command:
-          - cd ~/work/andex/odin/
-      #     - pnpm run dev
-      # - shell_command:
-      #     - cd ~/work/andex/denode-monorepo/
-      #     - pnpm run dev
+          - cd ~/work/andex/atlas
+          - pnpm nx run meridian:dev
+      - shell_command:
+          - cd ~/work/andex/atlas/
+          - pnpm nx run citadel:dev
     layout: even-horizontal
 
   # -------------------------
@@ -18,9 +18,9 @@ windows:
     focus: true
     panes:
       - shell_command:
-          - cd ~/work/andex/odin/
+          - cd ~/work/andex/atlas/
           - codex .
       - shell_command:
-          - cd ~/work/andex/odin/
+          - cd ~/work/andex/atlas/
           - nvim .
     layout: even-horizontal
