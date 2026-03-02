@@ -22,12 +22,12 @@ keybind = ctrl+[=text:\x1b
 # Ghostty split control
 # (Ctrl+q prefix, tmux-style)
 # =========================
-keybind = ctrl+q>shift+5=new_split:right
-keybind = ctrl+q>shift+'=new_split:down
-keybind = ctrl+q>h=goto_split:left
-keybind = ctrl+q>j=goto_split:bottom
-keybind = ctrl+q>k=goto_split:top
-keybind = ctrl+q>l=goto_split:right
-keybind = ctrl+q>z=toggle_split_zoom
-keybind = ctrl+q>c=new_tab
-keybind = ctrl+q>x=close_surface
+keybind = ctrl+a>shift+5=new_split:right
+keybind = ctrl+a>shift+'=new_split:down
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>x=close_surface

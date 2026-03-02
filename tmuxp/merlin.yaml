@@ -4,4 +4,7 @@ windows:
   - window_name: merlin
     panes:
       - shell_command:
+        - cd ~/trinkets/merlin/
+      - shell_command:
           - cd ~/trinkets/merlin/
+          - turso dev -f scraper/src/db/merlin-dev.db
