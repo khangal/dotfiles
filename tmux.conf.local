@@ -36,6 +36,13 @@ bind Q kill-session
 # set -g status-left '[#S] '
 # set -g status-right ""
 
+# Show SSH indicator in tmux status when client is remote.
+set -g status-position bottom
+set -g status-left '#{?#{E:SSH_CONNECTION},[SSH],} '
+
+# Make active pane border stand out only for SSH-attached clients.
+set-hook -g client-attached 'if -F "#{E:SSH_CONNECTION}" "set -g pane-active-border-style fg=#f6c177" "set -gu pane-active-border-style"'
+
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
 # source-file ~/.tmux.solarized.dark.local

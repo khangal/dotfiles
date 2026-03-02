@@ -102,7 +102,7 @@ return {
   'mattn/emmet-vim',
   'junegunn/vim-easy-align',
   'junegunn/goyo.vim',
-  'github/copilot.vim',
+  -- 'github/copilot.vim',
   'honza/vim-snippets',
   'JoosepAlviste/nvim-ts-context-commentstring',
   -- 'Raimondi/delimitMate',

@@ -5,10 +5,10 @@ windows:
     panes:
       - shell_command:
           - cd ~/work/andex/atlas
-          - pnpm nx run meridian:dev
+          - pnpm run dev:meridian
       - shell_command:
           - cd ~/work/andex/atlas/
-          - pnpm nx run citadel:dev
+          - pnpm run dev:citadel
     layout: even-horizontal
 
   # -------------------------
