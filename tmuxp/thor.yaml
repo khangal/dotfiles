@@ -19,7 +19,7 @@ windows:
     panes:
       - shell_command:
           - cd ~/work/asgard/
-          - codex .
+          - opencode .
       - shell_command:
           - cd ~/work/asgard/thor
           - nvim .

@@ -19,7 +19,7 @@ windows:
     panes:
       - shell_command:
           - cd ~/work/andex/mono/
-          - codex .
+          - opencode .
       - shell_command:
           - cd ~/work/andex/mono/
           - nvim .
