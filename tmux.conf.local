@@ -1,9 +1,9 @@
-# Use default binding
-unbind C-s
-set -g prefix2 C-q
-
 # Currently it's not possible to use only on pane-resize
 # set -g mouse on
+
+set -g prefix C-b
+bind C-b send-prefix
+bind-key -n C-q send-prefix
 
 bind M \
   set -g mouse on
@@ -45,5 +45,8 @@ set-hook -g client-attached 'if -F "#{E:SSH_CONNECTION}" "set -g pane-active-bor
 
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
+# set -g @plugin 'erikw/tmux-dark-notify'
+# set -g @dark-notify-theme-path-light '~/.tmux/tmux.dayfox.local'
+# set -g @dark-notify-theme-path-dark '~/.tmux/tmux.nightfox.local'
 # source-file ~/.tmux.solarized.dark.local
 source-file ~/.tmux/tmux.nightfox.local

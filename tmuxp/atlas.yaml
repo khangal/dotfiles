@@ -21,6 +21,6 @@ windows:
           - cd ~/work/andex/atlas/
           - opencode .
       - shell_command:
-          - cd ~/work/andex/atlas/
+          - cd ~/work/atlas/
           - nvim .
     layout: even-horizontal
