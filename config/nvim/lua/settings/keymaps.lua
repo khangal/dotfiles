@@ -19,6 +19,7 @@ vim.api.nvim_set_keymap('n', '<Leader>vb', ':tabe ~/dotfiles/config/nvim/lua/plu
 vim.api.nvim_set_keymap('n', '<Leader>vm', ':tabe ~/Dropbox/notes/maps-of-meaning.md<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>q', ':tabe ~/.ideas.markdown<CR>:lcd %:p:h<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>vn', ':tabe ~/Dropbox/notes/index.norg<CR>:lcd %:p:h<CR>', {})
+vim.keymap.set('n', '<Leader>ov', '<cmd>Vault<CR>', { desc = 'Open memorylake vault' })
 
 -- Notebook mappings
 vim.api.nvim_set_keymap('c', '\27[D', '<C-Left>', {})

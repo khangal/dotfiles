@@ -54,6 +54,10 @@ end
 
 -- Create a Neovim command to toggle Copilot
 vim.api.nvim_create_user_command('CopilotToggle', ToggleCopilot, {})
+vim.api.nvim_create_user_command('Vault', function()
+  vim.cmd('tabe ~/Dropbox/memorylake')
+  vim.cmd('lcd ~/Dropbox/memorylake')
+end, {})
 vim.api.nvim_set_keymap('n', 'yos', ':CopilotToggle<CR>', { noremap = true, silent = true })
 
 require 'colorizer'.setup {

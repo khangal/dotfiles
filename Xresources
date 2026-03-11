@@ -95,3 +95,9 @@ UXTerm*VT100.Translations: #override \
 
 UXTerm*metaSendsEscape:  true
 ! UXTerm*selectToClipboard: true
+
+! enable scrolling
+UXTerm*saveLines: 10000
+UXTerm*scrollBar: false
+UXTerm*mouseWheelScrollPage: false
+UXTerm*scrollTtyOutput: false
